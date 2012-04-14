@@ -6,9 +6,11 @@ class HomeController < ApplicationController
     session[:current_user] = nil
     redirect_to :action => 'login'
   end
+
   def show
    redirect_to :action => 'login'
   end
+
   def check_login
     password = get_encryp_pass(params[:password])
     user = User.find(:first,:conditions=>[" login_name = ? and login_password = ? ",params[:login],password] )

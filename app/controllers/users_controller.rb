@@ -3,19 +3,14 @@ require 'will_paginate'
 class UsersController < ApplicationController
   before_filter :require_user
   layout :set_layout
-  # GET /users
-  # GET /users.json
-#   layout 'admin_layout' , :except => [:employee , :change_password]
-  def admin
 
+  def admin
   end
 
   def employee
-
   end
 
   def change_password
-
   end
 
   def index
@@ -30,8 +25,6 @@ class UsersController < ApplicationController
    end
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
    if current_user.login_role.to_s.downcase == 'admin'
      @user = User.find(params[:id])
@@ -44,8 +37,6 @@ class UsersController < ApplicationController
    end
   end
 
-  # GET /users/new
-  # GET /users/new.json
   def new
     if current_user.login_role.to_s.downcase == 'admin'
       @user = User.new
@@ -58,13 +49,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(params[:user])
       respond_to do |format|
@@ -77,8 +65,7 @@ class UsersController < ApplicationController
        end
     end
   end
-  # PUT /users/1
-  # PUT /users/1.json
+
   def update
     @user = User.find(params[:id])
     respond_to do |format|
@@ -90,8 +77,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     if current_user.login_role.to_s.downcase == 'admin'
     @user = User.find(params[:id])

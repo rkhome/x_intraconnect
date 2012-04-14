@@ -2,7 +2,6 @@ class AlbumsController < ApplicationController
   before_filter :require_user
   layout :set_layout
 
-  # GET /albums
   def index
     @albums = Album.all
       respond_to do |format|
@@ -11,7 +10,6 @@ class AlbumsController < ApplicationController
       end
   end
 
-  # GET /albums/1
   def show
     @album = Album.find(params[:id])
       respond_to do |format|
@@ -20,7 +18,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # GET /albums/new
   def new
     @album = Album.new
     respond_to do |format|
@@ -29,12 +26,10 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # GET /albums/1/edit
   def edit
     @album = current_user.albums.find(params[:id])
   end
 
-  # POST /albums
   def create
     @album = current_user.albums.build(params[:album])
     respond_to do |format|
@@ -46,7 +41,6 @@ class AlbumsController < ApplicationController
     end
   end
 
-  # PUT /albums/1
   def update
     @album = current_user.albums.find(params[:id])
     if @album 
@@ -58,11 +52,9 @@ class AlbumsController < ApplicationController
 	  end
 	end
     else
-
     end
   end
 
-  # DELETE /albums/1
   def destroy
     @album = Album.find(params[:id])
     @album.destroy
@@ -76,8 +68,6 @@ class AlbumsController < ApplicationController
     render :template => 'albums/index'
   end
   def all_albums
-    #@albums = Album.find(:all,:conditions=>[" user_id = ? " , current_user.id] )
-    #@albums = current_user.albums
     @albums = Album.all
     render :template => 'albums/all_albums'
   end

@@ -1,7 +1,8 @@
-require 'rubygems'
-require 'spork'
-require 'clearance/shoulda_macros'
-
+#require 'rubygems'
+#require 'spork'
+#require 'clearance/shoulda_macros'
+require 'capybara/rails'
+require 'capybara/rspec'
 # require 'clearance/shoulda_macros'
 # Spork.prefork do
 #   # Loading more in this block will cause your tests to run faster. However, 

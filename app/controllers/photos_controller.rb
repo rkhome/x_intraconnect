@@ -1,9 +1,7 @@
 class PhotosController < ApplicationController
   before_filter :require_user
   layout :set_layout
-  # GET /photos
-  # GET /photos.json
-#   layout 'employee_layout'
+
   def index
     @album = Album.find(params[:album_id])
     @photos = @album.photos
@@ -13,8 +11,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # GET /photos/1
-  # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
     @comments = @photo.comments
@@ -25,8 +21,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # GET /photos/new
-  # GET /photos/new.json
   def new
     @album = Album.find(params[:album_id])
     @photo = @album.photos.build()
@@ -36,14 +30,11 @@ class PhotosController < ApplicationController
     end
   end
 
-  # GET /photos/1/edit
   def edit
     @photo = Photo.find(params[:id])
     @album = @photo.album
   end
 
-  # POST /photos
-  # POST /photos.json
   def create
     @album = Album.find(params[:album_id])
     params[:photo][:image].each do | image | 
@@ -61,8 +52,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # PUT /photos/1
-  # PUT /photos/1.json
   def update
     @album = Album.find(params[:album_id])
     @photo = @album.photos.build(params[:photo])
@@ -77,8 +66,6 @@ class PhotosController < ApplicationController
     end
   end
 
-  # DELETE /photos/1
-  # DELETE /photos/1.json
   def destroy
     @photo = Photo.find(params[:id])
     @album = @photo.album

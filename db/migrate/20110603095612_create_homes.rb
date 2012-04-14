@@ -1,8 +1,10 @@
 class CreateHomes < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :homes do |t|
-
       t.timestamps
     end
+  end
+  def self.down
+    drop_table :users
   end
 end
