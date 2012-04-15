@@ -1,0 +1,6 @@
+<div id="nav">
+	<ul class="sf-menu dropdown">
+    <li class="selected"><%= link_to 'Login' ,login_home_index_path%></li>    	
+    <li class="selected"><a href=<%= User.home_url(current_user) %> >Home</a></li>          
+  </ul>    
+</div>

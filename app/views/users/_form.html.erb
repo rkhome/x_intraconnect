@@ -12,72 +12,40 @@
   <center>
     <table>
       <tr>
-        <div class="field">
-          <td>
-            <b><%= f.label :login_name %></b>
-          </td> 
-          <td><%= f.text_field :login_name %>
-          </td>
+         <div class="field">
+           <td align="right"><b><%= f.label :login_name %></b></td><td><%= f.text_field :login_name %></td>
         </div>
       </tr>
       <tr>
          <div class="field">
-           <td>
-             <b><%= f.label :login_password %></b>
-           </td>
-           <td><%= f.text_field :login_password %>
-           </td>
+           <td align="right"><b><%= f.label :login_password %></b></td><td><%= f.text_field :login_password %></td>
          </div>
       </tr>
       <tr>
          <div class="field">
-           <td>
-             <b><%= f.label :first_name %></b>
-           </td>
-           <td><%= f.text_field :first_name %>
-           </td>
+           <td align="right"><b><%= f.label :first_name %></b></td></td><td><%= f.text_field :first_name %></td>
          </div>
       </tr>
       <tr>
         <div class="field">
-           <td>
-             <b><%= f.label :last_name %></b>
-           </td>
-           <td><%= f.text_field :last_name %>
-           </td>
+           <td align="right"><b><%= f.label :last_name %></b></td><td><%= f.text_field :last_name %></td>
         </div>
       </tr>
       <tr>
         <div class="field">
-           <td>
-             <b><%= f.label :login_role %></b>
-           </td>
-           <td><%= f.text_field :login_role %>
-           </td>
+           <td align="right"><b><%= f.label :login_role %></b></td><td><%= f.text_field :login_role %>
         </div>
-      </tr>
+        </tr>
       <tr>
         <div class="field">
-           <td>
-             <b><%= f.label :email_id %></b>
-           </td>
-           <td>
-             <%= f.text_field :email_id, :id =>'mail' %>
-           </td>
+           <td align="right"><b><%= f.label :email_id %></b></td><td><%= f.text_field :email_id, :id =>'mail' %></td>
         </div>
       </tr>
-      <tr>
-         <td>
-         </td>
-         <td>
-         </td>
-      </tr>
+      
       <tr>
         <div class="actions">
-          <td>
-            <b><%= f.submit %></b>
-          </td>
-          <td></td>
+<td></td>      
+    <td><b><%= f.submit %></b></td><td></td>
         </div>
       </tr>
   </table>

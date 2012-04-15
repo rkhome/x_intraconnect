@@ -1,5 +1,5 @@
 module ApplicationHelper
   def is_admin?
-   (current_user.login_role.to_s.downcase == 'admin') ? true : false
+   (current_user.login_role == 'admin') ? true : false
   end
 end

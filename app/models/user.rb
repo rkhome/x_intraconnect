@@ -13,4 +13,18 @@ class User < ActiveRecord::Base
   def name
     first_name + ' ' + last_name
   end 
+
+  def self.admin?(user)
+    user.login_role.to_s.downcase == 'admin'
+  end
+
+  def self.home_url(user)
+    return "/home/home_page" if user.blank?
+    case user.login_role.to_s.downcase
+      when "admin"
+        "/users/admin"
+      when "employee"
+        "/users/employee"
+      end
+    end
 end

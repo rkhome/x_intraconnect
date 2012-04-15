@@ -1,0 +1,28 @@
+<div id="nav">
+  <ul class="sf-menu dropdown">
+
+    <%= render :partial => 'layouts/nav_user' %>
+    <li><a class="has_submenu" href="#">Notification</a>
+      <ul>
+        <li><%= link_to 'Send Mail'  %></li>
+        <li><%= link_to 'Send SMS'  %></li>
+      </ul>
+    </li>
+
+
+    <li><a class="has_submenu" href="#">Albums</a>
+      <ul>
+        <li><%= link_to 'Add New Album', new_album_path %> </li>
+        <li><%= link_to 'My Albums' ,my_albums_albums_path%></li>
+        <li><%= link_to 'All Albums' ,all_albums_albums_path%></li>
+      </ul>
+    </li>
+    <li><a class="has_submenu" href="#">Employee</a>
+      <ul>
+        <li><%= link_to 'Add Employee' ,new_user_path%></li>
+        <li><%= link_to 'Show Employee Lists' ,users_path%></li>
+      </ul>
+    </li>
+    <li class="selected"><a href=<%= User.home_url(current_user) %>>Home</a></li>
+  </ul>
+</div>
