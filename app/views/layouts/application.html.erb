@@ -2,29 +2,21 @@
 <html>
   <head>
     <title>ED ALBUM</title>
-     <%= javascript_include_tag "jquery" %>
-     <%= javascript_include_tag "slider" %>
-     <%= javascript_include_tag "superfish" %>
-     <%= javascript_include_tag "custom" %>
+     <%= render :partial => 'layouts/default_js_css' %>
 
-     <%= javascript_include_tag "application" %>
-     <%= javascript_include_tag "prototype" %>
-     <%= javascript_include_tag "rails" %>
-     <%= javascript_include_tag "login_page" %>
-     <%= stylesheet_link_tag "styles" %>      
-     <%= csrf_meta_tag %>
    </head>
    <body>
      <div id="container">
        <%= render :partial => 'layouts/header' %>
-       <%= render :partial => 'layouts/nav' %>       
-       <%= render :partial => 'layouts/slides_container' %>  
-        <div id="body" class="has-slider">
-       <div class="middile">
+       <%= render :partial => 'layouts/nav' %>
+       <%= render :partial => 'layouts/slides_container' %>              
+       <div id="body" class="has-slider">
+          <div class="middile">
             <%= yield %>
-       </div>     
-    	<div class="clear"></div>
-    </div>
-   <%= render :partial => 'layouts/footer' %>    
+          </div>     
+    	    <div class="clear"></div>
+       </div>
+
+      <%= render :partial => 'layouts/footer' %>    
    </body>
  </html>
