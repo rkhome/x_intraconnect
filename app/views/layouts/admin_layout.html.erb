@@ -10,6 +10,12 @@
        <%= render :partial => 'layouts/nav_admin' %>       
        <%= render :partial => 'layouts/slides_container' %>  
         <div id="body" class="has-slider">
+     <% unless flash[:notice].blank? %>
+        <div id="notice"> <%= flash[:notice] %> </div>
+      <%end%>
+      <% unless flash[:error].blank? %>
+        <div id="error_msg"> <%= flash[:error] %> </div>
+      <%end%>
        <div class="middile">
             <%= yield %>
        </div>     

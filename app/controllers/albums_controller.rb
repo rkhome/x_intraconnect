@@ -40,9 +40,9 @@ class AlbumsController < ApplicationController
     @album = current_user.albums.build(params[:album])
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, notice=> 'Album was successfully created.' }
+        format.html { redirect_to @album, :notice=> 'Album was successfully created.' }
       else
-        format.html { render action=> "new" }
+        format.html { render :action=> "new" }
       end
     end
   end

@@ -6,6 +6,9 @@ class Album < ActiveRecord::Base
   belongs_to :cover_photo, :class_name => "Photo" ,:foreign_key =>'cover_photo_id'
   accepts_nested_attributes_for  :photos,  :allow_destroy  => true
 
+  validates :album_name, :presence => { :message => " is required" }
+  validates :album_description, :presence => { :message => " is required" }
+
   def is_owner?(user)
     album =  user.albums.find(:first,:conditions=>[" id = ? " , self.id]) 
     album ? true : false 

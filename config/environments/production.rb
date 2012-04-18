@@ -10,6 +10,8 @@ EdAlbum::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
   config.serve_static_assets = false
+  
+  #Paperclip.options[:command_path] = "/usr/local/bin"
 
   # Compress both stylesheets and JavaScripts
   config.assets.js_compressor  = :uglifier

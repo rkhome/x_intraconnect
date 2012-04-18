@@ -1,6 +1,6 @@
 <center> 
 <div class="row">
- <center><h2><%= current_user.name.upcase %> ALBUM</h2></center>
+ <center><h2><%= current_user.name.titleize %> Album</h2></center>
  <% count=0 %>
   <table >
     <% @albums.each do |album| %>

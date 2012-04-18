@@ -62,10 +62,11 @@ class UsersController < ApplicationController
       respond_to do |format|
        @user.login_password = get_encryp_pass(@user.login_password)
        if @user.save
-        format.html { redirect_to :controller =>'users',:action => 'admin', notice=> 'User was successfully created.' }
+        format.html { redirect_to :controller =>'users',:action => 'admin', :notice=> 'User was successfully created.' }
         else
+          flash[:error]="Constaint violated !"
          @user.login_password = nil
-         format.html { render action=> "new" }
+         format.html { render :action=> "new" }
        end
     end
   end
@@ -77,7 +78,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user])
         format.html { redirect_to @user, notice=> 'User was successfully updated.' }
       else
-        format.html { render action=> "edit" }
+        format.html { render :action=> "edit" }
       end
     end
   end

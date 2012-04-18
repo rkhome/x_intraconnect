@@ -7,8 +7,18 @@ class User < ActiveRecord::Base
   has_many :albums
   has_many :comments
   has_many :photos, :through => :comments
-  validates_presence_of :login_name, :login_password, :first_name, :last_name, :login_role,:email_id
-  validates_uniqueness_of :login_name
+  
+  validates :login_name, :presence => { :message => " is required" }
+  validates :login_password, :presence => { :message => " is required" }
+  validates_confirmation_of :login_password
+  validates :first_name, :presence => { :message => " is required" }
+  validates :last_name, :presence => { :message => " is required" }
+
+  validates :login_role, :presence => { :message => " is required" }
+  validates :email_id, :presence => { :message => " is required" }
+
+  validates :login_name, :uniqueness => { :message => " is already register" }
+  validates :email_id, :uniqueness => { :message => " is already register" }
 
   def name
     first_name + ' ' + last_name

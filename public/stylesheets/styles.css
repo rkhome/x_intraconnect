@@ -635,6 +635,7 @@ div.slide-text {
 
 #footer .footer-bottom p {
 	color: #999;
+  text-align:center;
 }
 
 #footer .footer-bottom p a {
@@ -644,4 +645,32 @@ div.slide-text {
 #log_in{
   left: 881px;
   position: absolute;
+}
+#notice_msg{
+  background-color: #E0FFFF;
+    color: #4C7D7E;
+    float: left;
+    font-size: 33px;
+    height: 50px;
+    margin-left: -20px;
+    margin-top: -19px;
+    text-align: center;
+    width: 980px;
+}
+#error_msg{
+  background-color: #E0FFFF;
+    color: red;
+    float: left;
+    font-size: 33px;
+    height: 50px;
+    margin-left: -20px;
+    margin-top: -19px;
+    text-align: center;
+    width: 980px;
+
+}
+.validation_error{
+ color:red; 
+float: left;
+    margin-left: -200px;
 }

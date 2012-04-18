@@ -1,6 +1,6 @@
 <li><a class="has_submenu" href="#"><%= current_user.name.titleize %></a>
       <ul>
         <li><%= link_to 'Change Password' ,change_password_users_path%></li>
-        <li ><%= link_to 'Logout' ,logout_home_index_path, :method => :delete %></li>
+        <li ><%= link_to 'Logout' ,logout_path%></li>
       </ul>
 </li>

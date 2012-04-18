@@ -3,14 +3,15 @@
   <head>
     <title>ED ALBUM</title>
      <%= render :partial => 'layouts/default_js_css' %>
-
    </head>
    <body>
      <div id="container">
        <%= render :partial => 'layouts/header' %>
        <%= render :partial => 'layouts/nav' %>
        <%= render :partial => 'layouts/slides_container' %>              
-       <div id="body" class="has-slider">
+       <div id="body" class="has-slider">   
+        <div id="notice"><%= flash[:notice] %> </div>   
+        <div id="error_msg"> <%= flash[:error] %> </div>
           <div class="middile">
             <%= yield %>
           </div>     

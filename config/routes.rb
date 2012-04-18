@@ -1,5 +1,5 @@
 EdAlbum::Application.routes.draw do
-
+match 'exit' => 'home#logout', :as => :logout
   resources :albums do
     resources :photos do
       resources :comments

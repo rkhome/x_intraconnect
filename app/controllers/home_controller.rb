@@ -4,8 +4,9 @@ class HomeController < ApplicationController
     render :layout => false
   end
 
-  def logout
+  def logout    
     session[:current_user] = nil
+    flash[:notice]="Successfully Loged-Out"
     redirect_to :action => 'login'
   end
   def show
@@ -23,8 +24,9 @@ class HomeController < ApplicationController
         flash[:note]="Welcome employee " + user.login_name
 	redirect_to :controller =>'users', :action => 'employee'
       end 
+      flash[:notice]="Successfully Loged-In"
     else
-      flash[:notice] = "User id or user password is not correct. please enter valid id and password"
+      flash[:error] = "User id or user password is not correct. please enter valid id and password"
       redirect_to :action => 'login'
     end 
   end
