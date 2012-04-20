@@ -30,7 +30,12 @@ class ApplicationController < ActionController::Base
   def require_user
     redirect_to login_home_index_path and return if session[:current_user].blank?
   end
-
+  
+  def set_default_flash
+    flash[:notice]=nil
+    flash[:error] =nil
+    flash[:warning]=nil  
+  end
 
 #   def require_admin
 #     if current_user.login_role.to_s.downcase == 'admin'

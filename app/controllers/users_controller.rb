@@ -39,6 +39,7 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
+    set_default_flash
     if current_user.login_role.to_s.downcase == 'admin'
       @user = User.new
         respond_to do |format|
