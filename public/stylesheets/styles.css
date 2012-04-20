@@ -1,7 +1,23 @@
 #log_in{
+
 }
 #pswd{
 }
+#login_content{
+
+}
+#notice {
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+width: 40%;
+border: 5px solid #ccc;
+margin-top: 50px;
+padding: 20px;
+font-weight: bold;
+}
+
+
 
 #txt_pswd{    
     position: relative;
@@ -674,3 +690,18 @@ div.slide-text {
 float: left;
     margin-left: -200px;
 }
+.notice{
+  background-color: #E0FFFF;
+    color: red;
+    float: left;
+    font-size: 33px;
+    height: 50px; 
+    text-align: center;
+    width: 980px;
+
+}
+.note{
+
+}
+
+

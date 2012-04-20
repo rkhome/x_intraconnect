@@ -2,11 +2,6 @@
 <html>
   <head>
     <title>ED ALBUM</title>
-     <%= javascript_include_tag "jquery" %>
-     <%= javascript_include_tag "slider" %>
-     <%= javascript_include_tag "superfish" %>
-     <%= javascript_include_tag "custom" %>
-
      <%= javascript_include_tag "application" %>
      <%= javascript_include_tag "prototype" %>
      <%= javascript_include_tag "rails" %>
@@ -18,56 +13,42 @@
      <div id="container">
        <%= render :partial => 'layouts/header' %>
        <%= render :partial => 'layouts/nav' %>       
-        <div id="body" id="has-slider">
+        <div id="body" >
           <div id="login_content">            
             <form method="post" action="/home/check_login" name="login_form" onsubmit="return validateForm()">
-    <table style="margin-top:50px;">
-      <tr>
-        <td width="25%">&nbsp;</td>
-        <td width="25%">&nbsp;</td>
-        <td>
-            <table>
-              <tr>
-                <td align="right">LOGIN NAME :</td>
-                <td><input id="login" type="text" name="login" size="30" /></td>
-              </tr>
-              <tr>
-                <td align="right"> PASSWORD :</td>
-                <td><input id="password" type="password" name="password" size="30" /> </td>
-              </tr>
-              <tr>
-                <td></td>  
-                <td align="left"><input type="checkbox" value="true"/> &nbsp;&nbsp;REMEMBER ME</td>    
- 
-              </tr>  
-              <tr>
-                <td></td>  
-                <td align="left"><input type="submit" value="Login" style="width:100px;"/> </td>    
-              </tr>
-            </table>                             
-        </td>
-      </tr>
-
-
-    </table>
-<!--                <div id="lbl_login">LOGIN NAME</div>-->
-<!--                <div id="txt_login"><input id="login" type="text" name="login" size="30" /></div>-->
-<!--      </div>-->
-<!--	      <div id="pswd">        <div id="lbl_pswd">LOGIN PASSWORD</div>-->
-<!--                <div id="txt_pswd"><input id="password" type="password" name="password" size="30" /></div>-->
-<!--</div>-->
-<!--	              <div><input id="btn_login" type="submit" value="Login" /></div>-->
-
+              <table style="margin-top:50px;">
+                <tr>
+                  <td width="25%">&nbsp;</td>
+                  <td width="25%">&nbsp;</td>
+                  <td>
+                      <table>
+                        <tr>
+                          <td align="right">LOGIN NAME :</td>
+                          <td><input id="login" type="text" name="login" size="30" /></td>
+                        </tr>
+                        <tr>
+                          <td align="right"> PASSWORD :</td>
+                          <td><input id="password" type="password" name="password" size="30" /> </td>
+                        </tr>
+                        <tr>
+                          <td></td>  
+                          <td align="left"><input type="checkbox" value="true"/> &nbsp;&nbsp;REMEMBER ME</td>    
+           
+                        </tr>  
+                        <tr>
+                          <td></td>  
+                          <td align="left"><input type="submit" value="Login" style="width:100px;"/> </td>    
+                        </tr>
+                      </table>                             
+                  </td>
+                </tr>
+              </table>
             </form>
           <div>
-    	<div class="clear"></div>
-    </div>
-   <%= render :partial => 'layouts/footer' %>    
+    	    <div class="clear"></div>
+        </div>
+     </div>   
+     <%= render :partial => 'layouts/footer' %>
    </body>
+    
  </html>
-
-
-
-
-
-

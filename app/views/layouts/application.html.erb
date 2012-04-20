@@ -9,9 +9,8 @@
        <%= render :partial => 'layouts/header' %>
        <%= render :partial => 'layouts/nav' %>
        <%= render :partial => 'layouts/slides_container' %>              
-       <div id="body" class="has-slider">   
-        <div id="notice"><%= flash[:notice] %> </div>   
-        <div id="error_msg"> <%= flash[:error] %> </div>
+       <div id="body" class="has-slider"> 
+      <%= flash_helper %>
           <div class="middile">
             <%= yield %>
           </div>     
