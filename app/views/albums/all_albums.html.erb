@@ -1,6 +1,7 @@
 <center>
 <div class="row">
-  <center><h2>ALL ALBUMS</h2></center>
+  <div class="clear"></div>
+<%= render :partial =>'home/marquee',:locals=>{:message =>"All Albums"} %> 
   <% count=0 %>
   <table >
   <% @albums.each do |album| %>

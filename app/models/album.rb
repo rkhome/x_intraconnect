@@ -1,5 +1,4 @@
-class Album < ActiveRecord::Base
-  self.per_page=10
+class Album < ActiveRecord::Base  
   after_create :send_mail
   belongs_to :user
   has_many :photos ,:dependent => :destroy

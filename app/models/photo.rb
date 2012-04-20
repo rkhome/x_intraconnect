@@ -1,5 +1,4 @@
-class Photo < ActiveRecord::Base
-  self.per_page=2
+class Photo < ActiveRecord::Base  
   after_create :set_cover_photo
   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => '/images/admin.jpeg'
   belongs_to :album

@@ -1,7 +1,12 @@
 .marquee{
   color: blue;margin-top: -10px; padding-bottom: 10px; text-align: center;size=20px;
 }
-
+.validation_error_new_album{
+  color: red;
+    float: left;
+    margin-left: -334px;
+    margin-top: 3px;
+}
 #log_in{
 }
 #pswd{

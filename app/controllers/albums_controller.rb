@@ -5,7 +5,8 @@ class AlbumsController < ApplicationController
 
   # GET /albums
   def index
-    @albums = Album.all
+    #@albums = Album.all
+    @albums = Album.all.paginate(:page=>params[:page],:per_page=>9)
       respond_to do |format|
       format.html # index.html.erb
       format.json { render json=> @albums }
@@ -37,10 +38,11 @@ class AlbumsController < ApplicationController
 
   # POST /albums
   def create
-    @album = current_user.albums.build(params[:album])
+    @album = current_user.albums.build(params[:album])    
     respond_to do |format|
       if @album.save
-        format.html { redirect_to @album, :notice=> 'Album was successfully created.' }
+        flash[:notice]="Album successfully created !"
+        format.html { redirect_to @album}
       else
         format.html { render :action=> "new" }
       end
@@ -77,6 +79,7 @@ class AlbumsController < ApplicationController
     @albums = Album.find(:all,:conditions=>[" user_id = ? " , current_user.id]).paginate(:page=>params[:page],:per_page=>3)    
     render :template => 'albums/index'
   end
+
   def all_albums
     #@albums = Album.find(:all,:conditions=>[" user_id = ? " , current_user.id] )
     #@albums = current_user.albums

@@ -1,6 +1,7 @@
 <center> 
 <div class="row">
- <center><h2><%= current_user.name.titleize %> Album</h2></center>
+ <div class="clear"></div>
+<%= render :partial =>'home/marquee',:locals=>{:message =>"#{current_user.name.titleize}'s Album"} %> 
  <% count=0 %>
   <table >
     <% @albums.each do |album| %>
