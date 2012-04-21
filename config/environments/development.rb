@@ -15,7 +15,18 @@ EdAlbum::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+
+  #ActionMailer::Base.content_type = "text/html"
+config.action_mailer.smtp_settings = {
+  :address => 'smtp.gmail.com',
+  :port => 25,
+  :domain => "gmail.com",
+  :authentication => :plain,  
+  :user_name => 'ed.album.team@gmail.com',
+  :password => 'vrr_edteam'
+}
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log

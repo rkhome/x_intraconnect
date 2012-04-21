@@ -1,5 +1,45 @@
+.email_marquee{
+ display: block;
+ float: left; 
+ font-size: 150%;
+ padding-top: 2px;
+ position: relative;
+ text-align: center;
+ text-decoration: inherit;
+ width: 100%;
+}
+.text_area{
+width: 505px; height: 18px;
+}
+
+.message_container{
+padding-top: 55px;
+}
+
+#edit_back_link{
+ margin-top: 25px;
+}
+#album_info{
+ padding-top: 55px;
+}
+
+#email_left{
+  float: left;
+    width: 60%;
+}
+#email_right{
+  float: right;
+    width: 30%;
+}
+#email_container{
+}
+#d_subject{
+}
+#d_body{
+}
+
 .marquee{
-  color: blue;margin-top: -10px; padding-bottom: 10px; text-align: center;size=20px;
+  color: #4747FF;margin-top: -10px; padding-bottom: 10px; text-align: center;size=20px;
 }
 .validation_error_new_album{
   color: red;
@@ -40,12 +80,6 @@ body {
 	font-size: 13px;
 	color: #666;
 }
-
-* {
-	margin:0;
-	padding:0;
-}
-
 /** element defaults **/
 table {
 	width: 100%;
@@ -656,13 +690,13 @@ div.slide-text {
   position: absolute;
 }
 #notice_msg{
-  background-color: #E0FFFF;
-    color: #4C7D7E;
+  background-color: #E5E5E5;
+    color: #71C671;
     float: left;
-    font-size: 33px;
+    font-size: 30px;
     height: 50px;
     margin-left: -20px;
-    margin-top: -19px;
+    margin-top: 0px;
     text-align: center;
     width: 980px;
 }
@@ -676,7 +710,7 @@ div.slide-text {
     margin-top: -19px;
     text-align: center;
     width: 980px;
-
+    margin-bottom:18px;
 }
 .validation_error{
  color:red; 

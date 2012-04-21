@@ -1,19 +1,30 @@
-<br><br><br>
+<% content_for :header do %>
+  <style type="text/css">
+    .center_align, th	{
+      text-align:center;
+    }
+  </style>
+<% end %>
+
+<div id="album_info">
 <center>
- <table border="2">
-  <tr>
-     <td><b>Album name:</b></td><td><%= @album.album_name %></td>
+ <table>
+  <tr>    
+    <th>Album Name</th>
+    <th>Album Description</th>
+    <th>User Name</th>   
   </tr>
+
   <tr>
-     <td><b>Album description:</b></td><td><%= @album.album_description %></td>
-  </tr>
-  <tr>
-     <td><b>User id:</b></td><td><%= @album.user_id %></td>
-  </tr>
-  <tr>
-     <td><b>album id:</b></td><td><%= @album.id %></td>
-  </tr>
+     <td><b><%= @album.album_name.titleize %></b></td>
+     <td><%= @album.album_description.titleize %></td>
+     <td><% "#{@album.user_id} #{@album.user.last_name.titleize}" %> </td>
+  </tr>  
  </table>
+<script>$("tr:odd").css("background-color", "#EBECE4");</script>
 </center>
+</div>
+<div id="edit_back_link">
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', my_albums_albums_path %>
+</div>

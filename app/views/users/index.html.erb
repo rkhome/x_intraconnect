@@ -1,7 +1,18 @@
+<% content_for :header do %>
+  <style type="text/css">
+    .center_align, th	{
+      text-align:center;
+    }
+  </style>
+<% end %>
+
 <%= render :partial =>'home/marquee',:locals=>{:message =>'EMPLOYEE INFORMATION'} %>
+<% row_count=0 %>
+<% colspan_count = User.admin?(current_user) ? 8 : 6 %>
 <center>
- <table border="2">
+ <table>
   <tr>
+    <th >Seq No</th>
     <th>Login name</th>
     <th>First name</th>
     <th>Last name</th>
@@ -14,12 +25,13 @@
     <% end %>
   </tr>
 
-   <% @users.each do |user| %>
+   <% @users.each do |user| %>  
    <tr>
-     <td><b><%= user.login_name %></b></td>
-     <td><b><%= user.first_name %></b></td>
-     <td><b><%= user.last_name %></b></td>
-     <td><b><%= user.login_role %></b></td>
+    <td class="center_align"><%= row_count+=1 %> </td>
+     <td><b><%= user.login_name.titleize %></b></td>
+     <td><b><%= user.first_name.titleize %></b></td>
+     <td><b><%= user.last_name.titleize %></b></td>
+     <td><b><%= user.login_role.titleize %></b></td>
      <td><b><%= user.email_id %></b></td>
      <td><%= link_to 'Show', user %></td>
     <% if User.admin?(current_user) %>
@@ -31,6 +43,7 @@
    </tr>
   <% end %>
  </table>
+<script>$("tr:odd").css("background-color", "#EBECE4");</script>
 </center>
 <br/>
 <%= will_paginate @users %>

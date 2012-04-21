@@ -38,8 +38,10 @@ match 'exit' => 'home#logout', :as => :logout
   resources :emailer do
     collection do
      get 'mail'
+     get 'new_email' 
      post 'sendmail'
      get 'admin'
+     post 'employee_email'
    end
   end 
 
