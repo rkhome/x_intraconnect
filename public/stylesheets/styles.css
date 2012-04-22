@@ -699,6 +699,7 @@ div.slide-text {
     margin-top: 0px;
     text-align: center;
     width: 980px;
+    margin-bottom:18px;
 }
 #error_msg{
   background-color: #E0FFFF;
