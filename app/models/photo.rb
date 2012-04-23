@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   belongs_to :album
   has_many :comments
   has_many :users, :through => :comments
+	has_many :likes, :as => :likedto
 
   def set_cover_photo
     unless self.album.cover_photo

@@ -1,4 +1,5 @@
 class Album < ActiveRecord::Base  
+	has_many:likes, :as => :likedto
   after_create :send_mail
   belongs_to :user
   has_many :photos ,:dependent => :destroy

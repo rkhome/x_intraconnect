@@ -76,7 +76,7 @@ class AlbumsController < ApplicationController
 
   def my_albums
     @albums = Album.find(:all,:conditions=>[" user_id = ? " , current_user.id] )
-    @albums = Album.find(:all,:conditions=>[" user_id = ? " , current_user.id]).paginate(:page=>params[:page],:per_page=>3)    
+    @albums = Album.find(:all,:conditions=>[" user_id = ? " , current_user.id]).paginate(:page=>params[:page],:per_page=>9)    
     render :template => 'albums/index'
   end
 
