@@ -56,7 +56,8 @@ match 'exit' => 'home#logout', :as => :logout
      get 'admin'
      post 'employee_email'
    end
-  end 
+  end
+ 
 
   root :to => 'home#home_page'
 

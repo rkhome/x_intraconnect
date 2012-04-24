@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :albums
   has_many :comments
   has_many :photos, :through => :comments
-	has_many:likes, :as => :likedto
+  has_many :likes, :as => :likedto_id
   
   validates :login_name, :presence => { :message => " is required" }
   validates :login_password, :presence => { :message => " is required" }
