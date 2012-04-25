@@ -1,0 +1,29 @@
+
+<tr>
+	<td><hr>
+	<%=get_user(problem.user_id)%></td>
+</tr>
+
+<tr>
+	<td><%=problem.created_at%></td>
+</tr>
+
+<tr>
+	<td>
+		Title; <%=problem.title%>
+	</td>	
+<tr>
+	<td>
+		<textarea id="textarea" name="content", cols = "50", rows = "5" disabled="disabled"><%=problem.description%></textarea>
+	</td>
+</tr>
+<tr>
+	<td>
+		<div id="solution"></div>
+	</td>
+</tr>
+<tr>
+	<td><input type="button" value="Show Solutions" onClick="show_solutions(<%=problem.id%>);"/>
+	</td>
+</tr>
+ 

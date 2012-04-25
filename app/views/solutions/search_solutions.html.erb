@@ -1,0 +1,40 @@
+<%=form_for (@solution, :url => "") do |f|%>
+  <br><br>
+	  <center>
+    <table>
+    <tr>
+    
+    <% @problems.each do|problem|%>
+	    <%=render :partial=>'problem',:locals=>{:problem =>problem}%>
+	    
+		<% end %>    
+    <tr>
+      
+         <td></td><td><%= submit_tag(" Post ") %></td>
+      
+      </tr>
+    </table>
+    <%= will_paginate @problems %>
+   </center>
+<br><br><br>
+<%end%>
+<script type="text/javaScript">
+function show_solutions(problem_id)
+	{
+	
+	$(document).ready(function(){
+		
+		$.ajax({
+		type: "POST",
+	  url: "/solutions/solutions",
+	  data: { problem_id : problem_id },
+	  success: function(response){
+			$("div#solution").append(response);
+			
+		}
+	 // dataType: "html"  
+		});
+		
+	});
+}
+</script>

@@ -56,6 +56,20 @@ match 'exit' => 'home#logout', :as => :logout
    end
   end 
 
+  resources :problems do
+     get 'new'
+  end
+
+	resources :solutions do
+     collection do
+     	get 'search_solutions'
+     	get 'create_solution'
+     	post 'solutions' 
+     end
+     
+  end
+
+
   root :to => 'home#home_page'
 
   # Keep in mind you can assign values other than :controller and :action

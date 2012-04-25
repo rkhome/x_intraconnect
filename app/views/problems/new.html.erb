@@ -1,0 +1,20 @@
+<%=form_tag(:controller => "problems", :action => "create", :method => "get") %>
+  <br><br>
+	  <center>
+    <table>
+    <%=flash[:notice]%>
+	  <%=flash[:error]%>
+     <tr>
+        <div class="field">
+    <tr>   <td align="right"><b><%=label_tag("Title") %></b></td><td><%= text_field(:problem,:title,:size=>51) %></td> </tr>
+     <tr> <td align="right"> <b><%= label_tag ("Problem Description") %></b></td><td><%= text_area(:problem, :description,:cols => "50", :rows => "15" ) %></td><tr>
+      </div>
+      </tr>
+      <tr>
+      <div class="actions">
+         <td></td><td><%= submit_tag(" Post ") %></td>
+      </div>
+      </tr>
+    </table>
+   </center>
+<br><br><br>
