@@ -1,56 +1,14 @@
-<div style="text-align:center">
-<%= form_for(@user, :html => {:id => 'user', :name => 'user_form', :onsubmit => "return validate_email();"}) do |f| %>  
-  <center>
-    <table>
-      <tr>
-         <div class="field">
-           <td align="right"><b><%= f.label :login_ID %></b></td><td><%= f.text_field :login_name %></td>
-          <%unless @user.errors[:login_name].blank?%> <td class="validation_error">Login Id<%=@user.errors[:login_name]%></td>  <%end%>
-        </div>
-      </tr>
-      <tr>
-         <div class="field">
-           <td align="right"><b><%= f.label :login_password %></b></td><td><%= f.password_field :login_password %></td>
-           <%unless @user.errors[:login_password].blank?%> <td class="validation_error">Login Password <%=@user.errors[:login_password]%></td>  <%end%>
-         </div>
-      </tr>
-      <tr>
-         <div class="field">
-           <td align="right"><b><%= f.label :confirm_password %></td><td><%= f.password_field :login_password_confirmation %></td>
-           <%unless @user.errors[:login_password_confirmation].blank?%> <td class="validation_error">Confirm Password <%=@user.errors[:login_password_confirmation].blank?%></td>  <%end%>
-         </div>
-      </tr>
-      <tr>
-         <div class="field">
-           <td align="right"><b><%= f.label :first_name %></b></td></td><td><%= f.text_field :first_name %></td>
-           <%unless @user.errors[:first_name].blank?%> <td class="validation_error">First Name<%=@user.errors[:first_name]%></td>  <%end%>
-         </div>
-      </tr>
-      <tr>
-        <div class="field">
-           <td align="right"><b><%= f.label :last_name %></b></td><td><%= f.text_field :last_name %></td>
-           <%unless @user.errors[:last_name].blank?%> <td class="validation_error">Last Name<%=@user.errors[:last_name]%></td>  <%end%>
-        </div>
-      </tr>
-      <tr>
-        <div class="field">
-           <td align="right"><b><%= f.label :login_role %></b></td><td><%= f.select :login_role, options_for_select([["Select One", ""], "Admin", "Employee"])%>
-           <%unless @user.errors[:login_role].blank?%> <td class="validation_error">Login Role<%=@user.errors[:login_role]%></td>  <%end%>
-        </div>
-        </tr>
-      <tr>
-        <div class="field">
-           <td align="right"><b><%= f.label :email_id %></b></td><td><%= f.text_field :email_id, :id =>'mail' %></td>
-           <%unless @user.errors[:email_id].blank?%> <td class="validation_error">Email-ID<%=@user.errors[:email_id]%></td>  <%end%>
-        </div>
-      </tr>
-      
-      <tr>
-        <div class="actions">
-<td></td>      
-    <td><b><%= f.submit %></b></td><td></td>
-        </div>
-      </tr>
+<div style="text-align:center; width:100%;">
+<%= form_for(@user, :html => {:id => 'user', :name => 'user_form',:multipart => true , :onsubmit => "return validate_email();"}) do |f| %>    
+<center>
+  <table>
+			<%= render :partial =>'user_fields',:locals=>{:f => f,:show_image=>false} %>      
+			<tr>
+				<div class="actions">
+				<td></td>      
+				<td><b><%= f.submit %></b></td><td></td>
+				</div>
+			</tr>
   </table>
  </center>
 <% end %>

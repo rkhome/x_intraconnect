@@ -18,7 +18,8 @@ class UsersController < ApplicationController
     
   end
 
-  def index       
+  def index
+		set_default_flash       
     @users = User.all.paginate(:page => params[:page], :per_page => 10)
       respond_to do |format|
         format.html # index.html.erb
@@ -62,12 +63,14 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
       respond_to do |format|
        @user.login_password = get_encryp_pass(@user.login_password)
+			@user.login_password_confirmation = get_encryp_pass(@user.login_password_confirmation)
        if @user.save
         flash[:notice]="User successfully created !" 
         format.html { redirect_to :controller =>'users',:action => 'admin'}
         else
           flash[:error]="Please fill all required fields !"
          @user.login_password = nil
+				 @user.login_password_confirmation = nil
          format.html { render :action=> "new" }
        end
     end

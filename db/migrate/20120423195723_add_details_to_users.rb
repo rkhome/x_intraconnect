@@ -5,7 +5,7 @@ class AddDetailsToUsers < ActiveRecord::Migration
     add_column :users, :permanent_address, :string
     add_column :users, :local_address, :string
     add_column :users, :city, :string
-    add_column :users, :date_of_birth, :Time
+    add_column :users, :date_of_birth, :datetime
     add_column :users, :user_image_file_name, :string
   end
 

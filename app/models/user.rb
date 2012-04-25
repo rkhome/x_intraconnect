@@ -8,12 +8,14 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :photos, :through => :comments
   has_many :likes, :as => :likedto_id
+	has_attached_file :user_image, :styles => { :medium => "300x300>", :thumb => "100x100>", :profile => "150x150>" }
   
-  validates :login_name, :presence => { :message => " is required" }
-  validates :login_password, :presence => { :message => " is required" }
-  validates_confirmation_of :login_password
+  validates :login_name, :presence => { :message => " is required" } 
+	validates :login_password, :confirmation => true
+  validates :login_password_confirmation, :presence => true 
   validates :first_name, :presence => { :message => " is required" }
   validates :last_name, :presence => { :message => " is required" }
+ # validates_presence_of :date_of_birth, :unless => Proc.new { |user| user.date_of_birth <= Time.now}, :messgae=>" is reqired"
 
   validates :login_role, :presence => { :message => " is required" }
   validates :email_id, :presence => { :message => " is required" }
