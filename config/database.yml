@@ -7,12 +7,12 @@ development:
   adapter: mysql
   database: ed_album
   pool: 5
-  username : root
-  password : 
+  username: root
+  password: root
 
 test:
   adapter: mysql
   database: ed_album_test
   pool: 5
-  username : root
-  password :
+  username: root
+  password:
