@@ -20,12 +20,14 @@ match 'exit' => 'home#logout', :as => :logout
 	
 	resources :likes do
 	collection do
-	end
+  get 'photo_like'
+	get 'photo_unlike'	
+  end
 	member do
 	get 'album_like'
 	get 'album_unlike'
-	get 'photo_like'
-	get 'photo_unlike'
+  get 'all_album_like'
+	get 'all_album_unlike'
 	get 'comment_like'
 	get 'comment_unlike'
 	end
