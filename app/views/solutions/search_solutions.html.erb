@@ -29,7 +29,7 @@ function show_solutions(problem_id)
 	  url: "/solutions/solutions",
 	  data: { problem_id : problem_id },
 	  success: function(response){
-			$("div#solution").append(response);
+			$("div#solution_"+<%= problem_id.to_s %>).append(response);
 			
 		}
 	 // dataType: "html"  
