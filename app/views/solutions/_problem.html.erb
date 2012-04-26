@@ -17,13 +17,30 @@
 		<textarea id="textarea" name="content", cols = "50", rows = "5" disabled="disabled"><%=problem.description%></textarea>
 	</td>
 </tr>
+
+	<td><input type="button" id="show_button_<%=problem.id%>" value="Show Solutions" onClick="show_solutions(<%=problem.id%>);"/>
+	<input type="button" id="hide_button_<%=problem.id%>" value="Hide Solutions" onClick="hide_solutions(<%=problem.id%>);"/>
+	</td>
+</tr>
 <tr>
 	<td>
-		<div id="solution_<%=problem.id%>"></div>
+		<div id="solution_<%=problem.id %>" ></div>
 	</td>
 </tr>
+
 <tr>
-	<td><input type="button" value="Show Solutions" onClick="show_solutions(<%=problem.id%>);"/>
-	</td>
+ <% form_tag({:controller => "solutions", :action => "create_solution"}, :method => "get") do |f| %>
+    
+	<td>Post Solution</td>
+</tr><tr>
+<tr><td> <textarea id="solution_of_<%=problem.id%>" name="solution", cols = "50", rows = "5"></textarea></td>
+<%= hidden_field_tag(:hidden_problem_id, problem.id) %>
 </tr>
+</tr>
+
+<tr>
+	<td><input type="submit" id="solution_button_<%=problem.id%>" value="Post Solutions"/></td>
+</tr>
+</tr>
+<% end %>
  

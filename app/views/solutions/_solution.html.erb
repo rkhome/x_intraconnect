@@ -1,7 +1,5 @@
 <table>
-
-<%@solution.each do |f|%>
-
+<%@solutions.each do |f|%>
 <tr>
 	<td width=15%> <%=User.find(f.user_id).first_name%></td>
 	<td><%= f.solution %></td>

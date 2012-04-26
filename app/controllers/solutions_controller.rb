@@ -6,13 +6,27 @@ class SolutionsController < ApplicationController
 	end
 	
 	def create_solution
+	
+	solution_ob = Solution.new
+		solution_ob.user_id = current_user.id
+		solution_ob.problem_id = params["hidden_problem_id"]
+		solution_ob.solution = params["solution"]
+		
+		solution_ob.varify = ""
+		if(solution_ob.save)
+			flash[:notice]="Sucecssful posted"
+			render :controller=>"solutions", :action=>"search_solutions"
+		else
+			flash[:notice]="Fail post"
+			redirect_to search_solutions_solutions_path
+		end
 	end
 	
 	def solutions
 		@problem=Problem.find(params["problem_id"])
-		@solution = @problem.solutions
-		render :partial=>'solution'
 		
+		@solutions = @problem.solutions
+		render :partial=>'solution'		
 	end
 
 end

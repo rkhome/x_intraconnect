@@ -1,27 +1,29 @@
-<%=form_for (@solution, :url => "") do |f|%>
+
   <br><br>
 	  <center>
     <table>
     <tr>
     
     <% @problems.each do|problem|%>
-	    <%=render :partial=>'problem',:locals=>{:problem =>problem}%>
-	    
+	    <%=render :partial=>'problem',:locals=>{:problem =>problem}%>	    
 		<% end %>    
     <tr>
       
-         <td></td><td><%= submit_tag(" Post ") %></td>
+         <td></td><td></td>
       
       </tr>
     </table>
     <%= will_paginate @problems %>
+   
    </center>
 <br><br><br>
-<%end%>
+
 <script type="text/javaScript">
 function show_solutions(problem_id)
 	{
-	
+	$("div#solution_"+problem_id).show();
+	$("#show_button_"+problem_id).hide();
+  $("#hide_button_"+problem_id).show();
 	$(document).ready(function(){
 		
 		$.ajax({
@@ -29,7 +31,7 @@ function show_solutions(problem_id)
 	  url: "/solutions/solutions",
 	  data: { problem_id : problem_id },
 	  success: function(response){
-			$("div#solution_"+<%= problem_id.to_s %>).append(response);
+	  	$("div#solution_"+problem_id).append(response);
 			
 		}
 	 // dataType: "html"  
@@ -37,4 +39,13 @@ function show_solutions(problem_id)
 		
 	});
 }
+
+function hide_solutions(problem_id)
+{
+
+$("div#solution_"+problem_id).hide();
+$("#show_button_"+problem_id).show();
+$("#hide_button_"+problem_id).hide();
+}
+
 </script>
