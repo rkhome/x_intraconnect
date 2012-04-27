@@ -15,7 +15,7 @@ class SolutionsController < ApplicationController
 		solution_ob.varify = ""
 		if(solution_ob.save)
 			flash[:notice]="Sucecssful posted"
-			render :controller=>"solutions", :action=>"search_solutions"
+			redirect_to search_solutions_solutions_path
 		else
 			flash[:notice]="Fail post"
 			redirect_to search_solutions_solutions_path
@@ -23,10 +23,10 @@ class SolutionsController < ApplicationController
 	end
 	
 	def solutions
+		session[:current_user] = User.find(params["c_u"])
 		@problem=Problem.find(params["problem_id"])
-		
 		@solutions = @problem.solutions
-		render :partial=>'solution'		
+		render :partial=>'solution', :layout=>false
 	end
 
 end

@@ -1,8 +1,10 @@
-<table>
-<%@solutions.each do |f|%>
-<tr>
-	<td width=15%> <%=User.find(f.user_id).first_name%></td>
-	<td><%= f.solution %></td>
-</tr>
-<%end%>
-</table>
+<% unless @solutions.blank? %>
+	<table>
+		<%@solutions.each do |f|%>
+			<tr>
+				<td width=15%> <%=User.find(f.user_id).first_name%></td>
+				<td><%= f.solution %></td>
+			</tr>
+		<%end%>
+	</table>
+<% end %>
