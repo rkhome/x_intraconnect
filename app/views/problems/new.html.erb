@@ -1,0 +1,41 @@
+<%=form_tag(:controller => "problems", :action => "create", :method => "get") %>
+ 
+  <div class="post_container"> 		
+  	<div class="title">
+  			Title
+		</div>
+		<div class="txt_title">
+  		<%= text_field(:problem,:title,:size=>52) %>
+		</div>
+		<div class="desc">
+  		Problem Description
+		</div>
+		<div class="txt_desc">
+  		<%= text_area(:problem, :description,:cols => "50", :rows => "15" ) %>
+		</div>
+		<div class="submit">
+  		<%= submit_tag "Post", :onclick=>"return check_post()", :style=>"width:100px;" %>
+		</div>
+	</div>
+	
+	<script type="text/javaScript">
+		function check_post()
+		{
+		
+			var title = document.getElementById("problem_title").value
+			var description = document.getElementById("problem_description").value
+		 if(title=="" || title==null)
+			{
+				alert("Title can't be blank");
+				return false;
+			}
+			if(description=="" || description==null)
+			{
+				alert("Description can't be blank");
+				return false;
+			}
+			return true;
+				
+		}
+	
+	</script>

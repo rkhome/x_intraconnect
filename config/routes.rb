@@ -1,5 +1,6 @@
 EdAlbum::Application.routes.draw do
 match 'exit' => 'home#logout', :as => :logout
+match 'delete_album/:id' => 'albums#destroy', :as => :delete_album
   resources :albums do
     resources :photos do
       resources :comments
@@ -20,12 +21,14 @@ match 'exit' => 'home#logout', :as => :logout
 	
 	resources :likes do
 	collection do
-	end
+  get 'photo_like'
+	get 'photo_unlike'	
+  end
 	member do
 	get 'album_like'
 	get 'album_unlike'
-	get 'photo_like'
-	get 'photo_unlike'
+  get 'all_album_like'
+	get 'all_album_unlike'
 	get 'comment_like'
 	get 'comment_unlike'
 	end
@@ -58,6 +61,23 @@ match 'exit' => 'home#logout', :as => :logout
    end
   end
  
+
+  resources :problems do
+     get 'new'
+  end
+
+	resources :solutions do
+     collection do
+     	get 'search_solutions'
+     	get 'create_solution'
+     	post 'solutions' 
+     end
+     member do
+     get 'verify'
+     get 'reject'
+     end
+  end
+
 
   root :to => 'home#home_page'
 

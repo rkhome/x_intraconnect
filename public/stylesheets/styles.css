@@ -48,9 +48,25 @@ padding-top: 55px;
     margin-top: 3px;
 }
 #log_in{
+
 }
 #pswd{
 }
+#login_content{
+
+}
+#notice {
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+width: 40%;
+border: 5px solid #ccc;
+margin-top: 50px;
+padding: 20px;
+font-weight: bold;
+}
+
+
 
 #txt_pswd{    
     position: relative;
@@ -699,6 +715,7 @@ div.slide-text {
     margin-top: 0px;
     text-align: center;
     width: 980px;
+    margin-bottom:18px;
 }
 #error_msg{
   background-color: #E0FFFF;
@@ -718,4 +735,72 @@ float: left;
     margin-left: -267px;
 }
 #user_image{
+}
+
+.post_container{
+float: left;
+    padding-left: 270px;
+    padding-top: 50px;
+}
+.title {
+    font-size: 14px;
+    font-weight: bold;
+    padding-bottom: 3px;
+}
+#problem_title{
+
+}
+.txt_title{
+}
+.desc{
+font-size: 14px;
+    font-weight: bold;
+    padding-top:12px;
+    padding-bottom: 3px;
+}
+.txt_desc{
+}
+
+.submit {
+    padding-top: 14px;
+}
+
+.trborder
+{
+BORDER-RIGHT: 1px solid #000000;
+BORDER-TOP: 1px solid #000000;
+
+BORDER-LEFT: 1px solid #000000;
+COLOR: black;
+BORDER-BOTTOM: 1px solid #000000;
+
+} 
+
+.notice{
+  background-color: #E0FFFF;
+    color: red;
+    float: left;
+    font-size: 33px;
+    height: 50px; 
+    text-align: center;
+    width: 980px;
+
+}
+.note{
+
+}
+.album_link {
+    margin-left: 33px;
+    margin-top: 10px;
+}
+.album_like {
+    padding-left: 62px;
+}
+.album_info{
+ font-family: Comic Sans MS;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 3px;
+    width: 197px;
+
 }

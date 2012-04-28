@@ -1,0 +1,67 @@
+<div class="clear"></div>
+  <br><br>
+	  <center>
+    <table>
+    <tr>
+
+    <% @problems.each do|problem|%>
+	    <%=render :partial=>'problem',:locals=>{:problem =>problem}%>	    
+		<% end %>    
+    <tr>
+      
+         <td></td><td></td>
+      
+      </tr>
+    </table>
+    <%= will_paginate @problems %>
+   
+   </center>
+<br><br><br>
+
+<script type="text/javaScript">
+
+$(document).ready(function(){	
+
+	$("hide_solution").hide();
+	
+});
+
+function show_solutions(problem_id)
+{  
+	$(document).ready(function(){		
+	
+		$.ajax({
+		type: "POST",
+	  url: "/solutions/solutions",
+	  data: { problem_id : problem_id, c_u : <%= current_user.id %>  },
+	  success: function(response){
+	  	$("div#solution_"+problem_id).append(response);
+			$("div#solution_"+problem_id).show();
+			$("#show_button_"+problem_id).hide();
+			$("#hide_button_"+problem_id).show();
+		}
+	 // dataType: "html"  
+		});		
+	});
+}
+
+function hide_solutions(problem_id)
+{
+$("div#solution_"+problem_id).hide();
+$("#show_button_"+problem_id).show();
+$("#hide_button_"+problem_id).hide();
+}
+
+function checkSolution(problem_id)
+{
+var sol = document.getElementById("solution_of_"+problem_id).value
+  if(sol == "" || sol ==null)
+  {
+  	alert("Solution Can't be Blank");
+  	return false;
+  }
+  
+	
+	return true;
+}
+</script>

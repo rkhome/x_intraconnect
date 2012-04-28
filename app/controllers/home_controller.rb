@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     render :layout => false
   end
 
-  def logout    
+  def logout  
     session[:current_user] = nil
     flash[:notice]="Successfully Loged-Out"
     redirect_to home_page_home_index_path
@@ -13,6 +13,7 @@ class HomeController < ApplicationController
    redirect_to :action => 'login'
   end
   def check_login
+
     password = get_encryp_pass(params[:password])
     user = User.find(:first,:conditions=>[" login_name = ? and login_password = ? ",params[:login],password] )
     if user 
@@ -24,7 +25,7 @@ class HomeController < ApplicationController
       	redirect_to :controller =>'users', :action => 'employee'
       end       
     else
-      flash[:error] = "User id or password is incorrect. Please enter your valid id and password"
+      flash[:error] = "User id or password is incorrect."
       redirect_to :action => 'login'
     end 
   end

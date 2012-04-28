@@ -18,6 +18,7 @@
       <% unless flash[:error].blank? %>
       <div class="clear"> </div>
         <table id='error_msg' border="1" ><tr><td> <%= flash[:error] %></td></tr></table>
+
       <%end%>
        <div class="middile">
             <%= yield %>
