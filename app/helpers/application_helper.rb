@@ -3,16 +3,13 @@ module ApplicationHelper
    (current_user.login_role == 'admin') ? true : false
   end
 
-  def flash_helper
-    f_names = [:notice, :warning, :message]
-    fl = ''
-    for name in f_names
-      if flash[name]
-        fl = fl + "<div class=\"notice\">#{flash[name]}</div>"
-      end
-    flash[name] = nil;
+  def nav
+      return 'layouts/nav' if current_user.nil?
+    case current_user.login_role.downcase
+    when "admin"
+      'layouts/nav_admin'
+    when "employee"
+      'layouts/nav_employee'    
     end
-  return fl
   end
-
 end

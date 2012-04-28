@@ -1,13 +1,18 @@
 <center> 
 <div class="row">
- <center><h2><%= current_user.name.titleize %> Album</h2></center>
+ <div class="clear"></div>
+<%= render :partial =>'home/marquee',:locals=>{:message =>"#{current_user.name.titleize}'s Album"} %> 
  <% count=0 %>
+<%flag=0%>
   <table >
     <% @albums.each do |album| %>
       <% if count%3==0 %>
         <tr>
       <% end %>
       <td align="center">
+	<table>
+	<tr>
+	<td>	
         <div class="col1">
          <div class="album_info">
             <font color="blue">album <%= album.album_name%></font>
@@ -25,10 +30,22 @@
           </div> 
         </div>
       </td>
+</tr>
+<tr>
+	<td align="left"><%=album.likes_count unless album.likes.blank?%> <%if album.likes.blank?%><%= link_to("Like", {:controller => "likes", :action => "album_like", :id => album.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "album_unlike", :id => album.id}, :remote=>true)%><%end%></td>
+	
+</tr>
+</table>
+</td>
       <% count+=1 %>
       <% if count%3==0%>
         </tr>
-      <% end %>
+     <% end %>
+	
+	
+
+
+
   <% end %>
   </table> 
 </div>

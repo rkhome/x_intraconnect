@@ -5,12 +5,17 @@
   <% else %>
     <center><h2>Album is empty</h2></center>
   <% end %>
-<table>
+<table border=1>
 <%count=0%>
      <% @photos.each do |photo| %>
 <%if count%3==0%>
 <tr>
 <%end%>
+
+<td>
+<table>
+<tr>
+
 <td align="center">
     <div class="col1">
        <%= link_to image_tag(photo.image.url(:original), :height => "200" , :width => "200") , album_photo_path(photo.album,photo) %>
@@ -23,6 +28,13 @@
        </div> 
      </div>
 </td>
+</tr>
+<tr>
+<td>
+<%=photo.likes_count.to_s+" people like this" unless photo.likes.blank?%> <%if !photo.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "photo_like", :id => photo.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "photo_unlike", :id => photo.id}, :remote=>true)%><%end%>
+</td>
+</tr>
+</table>
 <%count+=1%>
 <%if count%3==0%>
 </tr>

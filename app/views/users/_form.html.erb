@@ -34,7 +34,7 @@
       </tr>
       <tr>
         <div class="field">
-           <td align="right"><b><%= f.label :login_role %></b></td><td><%= f.text_field :login_role %>
+           <td align="right"><b><%= f.label :login_role %></b></td><td><%= f.select :login_role, options_for_select([["Select One", ""], "Admin", "Employee"])%>
            <%unless @user.errors[:login_role].blank?%> <td class="validation_error">Login Role<%=@user.errors[:login_role]%></td>  <%end%>
         </div>
         </tr>

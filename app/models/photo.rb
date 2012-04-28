@@ -1,10 +1,10 @@
-class Photo < ActiveRecord::Base
-  self.per_page=2
+class Photo < ActiveRecord::Base  
   after_create :set_cover_photo
-  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => '/images/admin.jpeg'
+  has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => '/images/default.gif'
   belongs_to :album
   has_many :comments
   has_many :users, :through => :comments
+  has_many :likes, :as => :likedto
 
   def set_cover_photo
     unless self.album.cover_photo

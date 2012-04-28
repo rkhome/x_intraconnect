@@ -7,18 +7,18 @@ class UsersController < ApplicationController
   # GET /users.json
 #   layout 'admin_layout' , :except => [:employee , :change_password]
   def admin
-
+    
   end
 
   def employee
-
+    
   end
 
   def change_password
-
+    
   end
 
-  def index   
+  def index       
     @users = User.all.paginate(:page => params[:page], :per_page => 10)
       respond_to do |format|
         format.html # index.html.erb
@@ -45,7 +45,8 @@ class UsersController < ApplicationController
         format.html # new.html.erb
         format.json { render json=> @user }
        end
-    else 
+    else
+      flash[:error]="authentication fail !" 
       redirect_to logout_home_index_path
     end
   end
@@ -62,9 +63,10 @@ class UsersController < ApplicationController
       respond_to do |format|
        @user.login_password = get_encryp_pass(@user.login_password)
        if @user.save
-        format.html { redirect_to :controller =>'users',:action => 'admin', :notice=> 'User was successfully created.' }
+        flash[:notice]="User successfully created !" 
+        format.html { redirect_to :controller =>'users',:action => 'admin'}
         else
-          flash[:error]="Constaint violated !"
+          flash[:error]="Please fill all required fields !"
          @user.login_password = nil
          format.html { render :action=> "new" }
        end
@@ -76,7 +78,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to @user, notice=> 'User was successfully updated.' }
+        flash[:notice]='User detail successfully updated.'
+        format.html { redirect_to @user}
       else
         format.html { render :action=> "edit" }
       end
@@ -89,6 +92,7 @@ class UsersController < ApplicationController
     if current_user.login_role.to_s.downcase == 'admin'
     @user = User.find(params[:id])
     @user.destroy
+    flash[:notice]="User successfully deleted ! "
     respond_to do |format|
       format.html { redirect_to users_url }
       format.json { head :ok }
@@ -105,13 +109,14 @@ class UsersController < ApplicationController
       if @user then
         @user.login_password = new_password
         @user.save
+        flash[:notice]="Password successfully changed ! "
         if current_user.login_role.to_s.downcase == 'admin'
            redirect_to :action => 'admin'
         else
            redirect_to :action => 'employee'
         end
       else 
-        flash[:notice] = "You have entered wrong current password. Please try again"
+        flash[:error] = "You have entered wrong current password. Please try again !"
         redirect_to :action => 'change_password'
       end
    end  

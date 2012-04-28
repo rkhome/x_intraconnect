@@ -2,15 +2,23 @@
 <html>
   <head>
     <title>ED ALBUM</title>
+      <%= yield :header %>
       <%= render :partial => 'layouts/default_js_css' %>
    </head>
    <body>
      <div id="container">
        <%= render :partial => 'layouts/header' %>
-       <%= render :partial => 'layouts/nav_employee' %>       
+       <%= render :partial => nav %>       
        <%= render :partial => 'layouts/slides_container' %>  
         <div id="body" class="has-slider">
-     <%= flash_helper %>
+     <% unless flash[:notice].blank? %>
+      <div class="clear"> </div>
+      <table id='notice_msg' border="1" ><tr><td> <%= flash[:notice] %></td></tr></table>
+     <% end %>
+      <% unless flash[:error].blank? %>
+        <div class="clear"> </div>
+        <table id='error_msg' border="1" ><tr><td> <%= flash[:error] %></td></tr></table>
+      <%end%>
        <div class="middile">
             <%= yield %>
        </div>     

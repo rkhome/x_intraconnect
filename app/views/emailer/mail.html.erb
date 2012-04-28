@@ -1,11 +1,45 @@
+<script type="text/javascript">
+  function checkAll(field)
+  {
+    document.getElementById('CheckAll')
+    for (i = 0; i < field.length; i++)
+	   field[i].checked = true ;
+  }
+
+  function uncheckAll(field)
+  {
+  for (i = 0; i < field.length; i++)
+	  field[i].checked = false ;
+  }
+</script>
+
 <center><font color="blue"><h2>ADMIN EMAIL PAGE</h2></font></center><br>
-<center><h2><%= notice %></h2></center>
-<form method="post" action="/emailer/sendmail">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-    <div class="mail_body"><br><br>
-       <b>Recipient:</b><div class="recipient"><input type="text" name="recipient" size="50"></div><br>
-       <b>Subject:</b><div class="subject"><input type="text" name="subject" size="50"></div><br>
-       <b>Message:</b><div class="message"><textarea name="message" rows="20" cols="120"></textarea></div>
-       <input type="submit" name="send_mail" value="SEND">
-     </div>
-</form>
+
+<div>
+  <div id="email_left">
+    <form method="post" action="/emailer/sendmail">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <div class="mail_body"><br><br>
+           <b>Recipient:</b><div class="recipient"><input type="text" name="recipient" size="50"></div><br>
+           <b>Subject:</b><div class="subject"><input type="text" name="subject" size="50"></div><br>
+           <b>Message:</b><div class="message"><textarea name="message" rows="20" cols="120"></textarea></div>
+           <input type="submit" name="send_mail" value="SEND">
+         </div>
+    </form>
+  </div>
+  <div id="email_right">
+    <input type="checkbox" name="CheckAll" value="Check All"
+    onClick="checkAll(document.myform.list)">   
+
+    <input type="checkbox" name="list[]" value="1">Java<br>
+    <input type="checkbox" name="list[]" value="2">Javascript<br>
+    <input type="checkbox" name="list[]" value="3">Active Server Pages<br>
+    <input type="checkbox" name="list[]" value="4">HTML<br>
+    <input type="checkbox" name="list[]" value="5">SQL<br>
+
+
+    <br>
+  </div>
+</div>
+
+

@@ -1,5 +1,5 @@
 class CreateUsers < ActiveRecord::Migration
-  def change
+  def self.up
     create_table :users do |t|
       t.string :login_name
       t.string :login_password
@@ -8,7 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :login_role
       t.string :email_id
 
-      t.timestamps
-    end
-  end
+      t.timestamps  end
+  def self.down
+    drop_table :users
+  end  
 end

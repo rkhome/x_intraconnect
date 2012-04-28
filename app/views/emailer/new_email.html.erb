@@ -1,0 +1,31 @@
+<% content_for :header do %>
+<%= javascript_include_tag "jquery.min.js" %>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('.checkall_n').click(function () {
+		$(this).parents('fieldset:eq(0)').find(':checkbox').attr('checked', this.checked);
+	});
+});  
+</script>
+<% end %>
+<div class="marquee email_marquee">'You can send email to Desired Recipients. By check them in right pane.'</div>
+<form method="post" action="/emailer/employee_email">
+  <div class="message_container">
+    <div id="email_left">
+      <table border="1">
+        <tr>
+          <td>
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+                <div class="mail_body"><br/>
+                   <b>Subject:</b><div class="subject" style="margin-left:10px;"><%= text_area_tag 'subject', nil, :size => "60x1", :class=>'text_area'%></div><br>
+                   <b>Message:</b><div class="message" style="margin-left:10px;"><%= text_area_tag 'message', nil, :size => "60x10" %></textarea></div>
+                   <br/>
+                   <input type="submit" name="send_mail" value="SEND" style="  height: 40px; margin-bottom: 10px; margin-left: 10px; width: 112px;" >
+                 </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+   <%= render :partial => 'shared/email_recipents' %>
+</div>
+</form>    

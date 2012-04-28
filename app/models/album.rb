@@ -1,10 +1,10 @@
-class Album < ActiveRecord::Base
-  self.per_page=10
-  after_create :send_mail
+class Album < ActiveRecord::Base  
+	has_many :likes, :as => :likedto, :dependent => :destroy
+  #after_create :send_mail
   belongs_to :user
   has_many :photos ,:dependent => :destroy
   belongs_to :cover_photo, :class_name => "Photo" ,:foreign_key =>'cover_photo_id'
-  accepts_nested_attributes_for  :photos,  :allow_destroy  => true
+  accepts_nested_attributes_for :photos, :allow_destroy  => true
 
   validates :album_name, :presence => { :message => " is required" }
   validates :album_description, :presence => { :message => " is required" }
@@ -16,8 +16,11 @@ class Album < ActiveRecord::Base
 
   def name
     first_name + ' ' + last_name
-  end 
+  end
+end
 
+
+=begin
   def send_mail
     recipients = User.all
     recipients.each do |user|
@@ -27,4 +30,4 @@ class Album < ActiveRecord::Base
     end
     self.save
   end
-end
+=end
