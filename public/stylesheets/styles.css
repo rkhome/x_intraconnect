@@ -747,5 +747,19 @@ float: left;
 .note{
 
 }
+.album_link {
+    margin-left: 33px;
+    margin-top: 10px;
+}
+.album_like {
+    padding-left: 62px;
+}
+.album_info{
+ font-family: Comic Sans MS;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-left: 3px;
+    width: 197px;
 
+}
 

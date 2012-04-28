@@ -13,7 +13,7 @@
 <tr>
 <td width=20%><h5><font color="blue"><%= comment.user.name %></font> :</td><td> <%= comment.comment_name %></h5></td>
 </tr>
-<tr><td><%if !comment.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "comment_like", :id => comment.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "comment_unlike", :id => comment.id}, :remote=>true)%><%end%></td><td><%=comment.likes_count.to_s+" people like this" unless comment.likes.blank?%> </td></tr>
+<tr><td><%if !comment.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "comment_like", :id => comment.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "comment_unlike", :id => comment.id}, :remote=>true)%><%end%></td><td><%=comment.likes_count.to_s+" people liked" unless comment.likes.blank?%> </td></tr>
       <% end %>
 </table>  
   </div>

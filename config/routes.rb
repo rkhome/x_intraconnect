@@ -1,5 +1,6 @@
 EdAlbum::Application.routes.draw do
 match 'exit' => 'home#logout', :as => :logout
+match 'delete_album/:id' => 'albums#destroy', :as => :delete_album
   resources :albums do
     resources :photos do
       resources :comments

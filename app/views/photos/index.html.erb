@@ -1,7 +1,7 @@
 <center>  
 <div class="row">
   <% if @photos.first %>
-     <center><h2>Photo from <%= @photos.first.album.album_name %> album</h2></center>
+     <center><h2>Photo from <%= @photos.first.album.album_name.titleize %> album</h2></center>
   <% else %>
     <center><h2>Album is empty</h2></center>
   <% end %>
@@ -31,7 +31,7 @@
 </tr>
 <tr>
 <td>
-<%=photo.likes_count.to_s+" people like this" unless photo.likes.blank?%> <%if !photo.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "photo_like", :id => photo.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "photo_unlike", :id => photo.id}, :remote=>true)%><%end%>
+<%=photo.likes_count.to_s+" people liked" unless photo.likes.blank?%> <%if !photo.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "photo_like", :id => photo.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "photo_unlike", :id => photo.id}, :remote=>true)%><%end%>
 </td>
 </tr>
 </table>
