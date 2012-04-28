@@ -16,5 +16,12 @@ class Emailer < ActionMailer::Base
     @content_type = "text/html"
     @album = album
   end
+  
+  def employee_email(from_user_email_id, to_users_email_ids, email_subject, email_body)
+    recipients  to_users_email_ids
+    subject     email_subject
+    from        from_user_email_id
+    body        email_body
+  end
 
 end

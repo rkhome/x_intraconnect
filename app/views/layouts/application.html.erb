@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>ED ALBUM</title>
+      <%= yield :header %>
      <%= render :partial => 'layouts/default_js_css' %>
    </head>
    <body>
@@ -12,10 +13,11 @@
        <div id="body" class="has-slider">   
         <% unless flash[:notice].blank? %>
       <div class="clear"> </div>
-      <div id='notice_msg'> <%= flash[:notice] %> </div>
+      <table id='notice_msg' border="1" ><tr><td> <%= flash[:notice] %></td></tr></table>
      <% end %>
       <% unless flash[:error].blank? %>
-        <div id="error_msg"> <%= flash[:error] %> <div>
+       <div class="clear"> </div>
+        <table id='error_msg' border="1" ><tr><td> <%= flash[:error] %></td></tr></table>
       <%end%>
           <div class="middile">
             <%= yield %>

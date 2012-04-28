@@ -1,5 +1,6 @@
 EdAlbum::Application.routes.draw do
 match 'exit' => 'home#logout', :as => :logout
+match 'delete_album/:id' => 'albums#destroy', :as => :delete_album
   resources :albums do
     resources :photos do
       resources :comments
@@ -17,6 +18,21 @@ match 'exit' => 'home#logout', :as => :logout
      get 'all_albums'
    end
   end
+	
+	resources :likes do
+	collection do
+  get 'photo_like'
+	get 'photo_unlike'	
+  end
+	member do
+	get 'album_like'
+	get 'album_unlike'
+  get 'all_album_like'
+	get 'all_album_unlike'
+	get 'comment_like'
+	get 'comment_unlike'
+	end
+	end
   resources :users do
     collection do
      post 'modify_password'
@@ -38,10 +54,13 @@ match 'exit' => 'home#logout', :as => :logout
   resources :emailer do
     collection do
      get 'mail'
+     get 'new_email' 
      post 'sendmail'
      get 'admin'
+     post 'employee_email'
    end
-  end 
+  end
+ 
 
   root :to => 'home#home_page'
 

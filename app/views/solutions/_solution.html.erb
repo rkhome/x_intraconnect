@@ -1,0 +1,29 @@
+<% unless @solutions.blank? %>
+	<table border="1" cellspacing="0" cellpadding="4">
+		<%@solutions.each do |f|%>
+			<tr >
+				<td width=15%> <%=User.find(f.user_id).first_name.titleize%></td>
+				<td><%= f.solution %></td>
+				
+				<td>
+				<%if ((current_user.login_role=="employee" && f.varify!="reject") || (current_user.login_role=="admin"))%>
+					<%=link_to("Verify",verify_solution_path(f.id))%>
+				<%end%>
+				</td>
+				<%if current_user.login_role == "admin" %>
+					<td><%=link_to("Reject",reject_solution_path(f.id))%></td>
+				<%end%>
+				<td>
+				<%if f.varify=="verify"%>
+					<img width="20" height="20" title="Verify" src="/images/verify.jpeg" alt="verify">
+				<%end%>
+				<%if f.varify=="reject"%>
+					<img width="20" height="20" title="Reject" src="/images/reject.jpeg" alt="reject">
+				<%end%>
+				</td>
+	</tr>
+<%end%>
+	
+		 
+	</table>
+<% end %>

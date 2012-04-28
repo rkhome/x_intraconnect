@@ -7,10 +7,16 @@
        <%= image_tag @photo.image.url(:original) %>
     </div>
     <div id="all_comment_content" class="all_comments">
-      <% @comments.each do |comment| %>
-	  <h5><font color="blue"><%= comment.user.name %></font> : <%= comment.comment_name %></h5>
+<table border=1>
+     
+   <% @comments.each do |comment| %>
+<tr>
+<td width=20%><h5><font color="blue"><%= comment.user.name %></font> :</td><td> <%= comment.comment_name %></h5></td>
+</tr>
+<tr><td><%if !comment.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "comment_like", :id => comment.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "comment_unlike", :id => comment.id}, :remote=>true)%><%end%></td><td><%=comment.likes_count.to_s+" people liked" unless comment.likes.blank?%> </td></tr>
       <% end %>
-    </div>
+</table>  
+  </div>
     <div class="comment" id="show">
        <TEXTAREA id="photo_comment_text" name="comment_name" rows="2" cols="50"></TEXTAREA>
        <input type="button" name="comment" value="comment" onclick="post_comment('<%= album_photo_comments_path(@photo.album,@photo) %>','show')">
