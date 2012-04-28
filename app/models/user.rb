@@ -4,12 +4,13 @@ class User < ActiveRecord::Base
   cattr_reader :page
   @@page = 5
 
-  has_many :albums
-  has_many :comments
-  has_many :photos, :through => :comments
-	has_many:likes, :as => :likedto
-  has_many :problems
+  has_many :albums, :dependent => :destroy
+  has_many :comments, :dependent => :destroy 
+  has_many :photos, :through => :comments 
+  has_many :likes, :as => :likedto_id , :dependent => :destroy
+	has_many :problems
   has_many :solutions  
+  
   validates :login_name, :presence => { :message => " is required" }
   validates :login_password, :presence => { :message => " is required" }
   validates_confirmation_of :login_password

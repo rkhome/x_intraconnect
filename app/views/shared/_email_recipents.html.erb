@@ -1,0 +1,16 @@
+  <div id="email_right">
+    <table border="1">
+        <tr>
+          <td>
+            <fieldset>
+              <hr/>
+              <div><input type="checkbox" class="checkall_n"> Select All</div>
+              <hr/>
+              <% @users.each do |user| %>
+       <div><%= check_box_tag 'user_ids[]', user.id %><%=label_tag "#{user.id}", "#{user.id} | #{user.first_name.titleize} #{user.last_name.titleize}"%></div>
+             <% end %>
+            </fieldset>
+         </td>
+       </tr>
+    </table>
+  </div>

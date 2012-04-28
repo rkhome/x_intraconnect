@@ -7,19 +7,18 @@ class UsersController < ApplicationController
   # GET /users.json
 #   layout 'admin_layout' , :except => [:employee , :change_password]
   def admin
-    set_default_flash
+    
   end
 
   def employee
-    set_default_flash
+    
   end
 
   def change_password
-    set_default_flash
+    
   end
 
-  def index   
-    set_default_flash
+  def index       
     @users = User.all.paginate(:page => params[:page], :per_page => 10)
       respond_to do |format|
         format.html # index.html.erb
@@ -30,7 +29,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-     set_default_flash
      @user = User.find(params[:id])
        respond_to do |format|
        format.html # show.html.erb
@@ -41,7 +39,6 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.json
   def new
-    set_default_flash
     if current_user.login_role.to_s.downcase == 'admin'
       @user = User.new
         respond_to do |format|
@@ -56,14 +53,12 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    set_default_flash
     @user = User.find(params[:id])
   end
 
   # POST /users
   # POST /users.json
   def create
-    set_default_flash
     @user = User.new(params[:user])
       respond_to do |format|
        @user.login_password = get_encryp_pass(@user.login_password)
@@ -80,7 +75,6 @@ class UsersController < ApplicationController
   # PUT /users/1
   # PUT /users/1.json
   def update
-    set_default_flash
     @user = User.find(params[:id])
     respond_to do |format|
       if @user.update_attributes(params[:user])
