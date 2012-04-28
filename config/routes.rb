@@ -66,7 +66,10 @@ match 'exit' => 'home#logout', :as => :logout
      	get 'create_solution'
      	post 'solutions' 
      end
-     
+     member do
+     get 'verify'
+     get 'reject'
+     end
   end
 
 

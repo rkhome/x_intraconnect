@@ -1,6 +1,6 @@
 <tr>
 	<td><hr>
-	<%=get_user(problem.user_id)%></td>
+	<%=get_user(problem.user_id).titleize%></td>
 </tr>
 
 <tr>
@@ -9,7 +9,7 @@
 
 <tr>
 	<td>
-		Title; <%=problem.title%>
+		Title; <%=problem.title.titleize%>
 	</td>	
 <tr>
 	<td>
@@ -18,7 +18,7 @@
 </tr>
 
 	<td><input type="button" id="show_button_<%=problem.id%>" value="Show Solutions" onClick="show_solutions(<%=problem.id%>);"/>
-	<input type="button" id="hide_button_<%=problem.id%>" value="Hide Solutions" onClick="hide_solutions(<%=problem.id%>);"/>
+	<input type="button" name="hide_solution" id="hide_button_<%=problem.id%>" value="Hide Solutions" onClick="hide_solutions(<%=problem.id%>);"/>
 	</td>
 </tr>
 <tr>

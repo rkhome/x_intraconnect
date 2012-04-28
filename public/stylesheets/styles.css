@@ -711,3 +711,13 @@ font-size: 14px;
     padding-top: 14px;
 }
 
+.trborder
+{
+BORDER-RIGHT: 1px solid #000000;
+BORDER-TOP: 1px solid #000000;
+
+BORDER-LEFT: 1px solid #000000;
+COLOR: black;
+BORDER-BOTTOM: 1px solid #000000;
+
+} 

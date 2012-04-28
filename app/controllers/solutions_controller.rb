@@ -28,5 +28,21 @@ class SolutionsController < ApplicationController
 		@solutions = @problem.solutions
 		render :partial=>'solution', :layout=>false
 	end
+	
+	def verify
+	
+		sol = Solution.find_by_id(params[:id])
+		sol.update_attribute(:varify,"verify")
+		redirect_to search_solutions_solutions_path
+		flash[:notice]="Verified Solution"
+	end
+	
+	def reject
+	
+		sol = Solution.find_by_id(params[:id])
+		sol.update_attribute(:varify,"reject")
+		redirect_to search_solutions_solutions_path
+		flash[:notice]="Rejected Solution"
+	end
 
 end
