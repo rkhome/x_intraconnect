@@ -1,0 +1,33 @@
+<%= javascript_include_tag "jquery_calender.js"%>
+<%= javascript_include_tag "jquery_ui_calender.js"%>
+<div>
+	<div id ="all_thought" style="font-size:15px;padding-top:34px"><%@suggestion.each do |f|%>
+	<div id="user_picture"></div>
+	<div id = "user"><div><%=user_name(f.user_id)%>:  <%=f.suggestion%></div>
+	<div><%=f.ed_date%></div>	
+	
+	</div>
+	<%end%>
+	<%= will_paginate @suggestion %>
+	</div>
+	<%= form_tag({:controller => "suggestions", :action => "create_event"}, :method => "get") do |f|%>
+	<div id ="idea" style="padding-top:15px"> <%= label_tag "Date of Event" %><%= date_select("date_of_event", :order => [:day, :month, :year]) %><br />
+	</div>
+	<div id ="sugges"><div>Suggestion</div> <textarea id="sugg_area" name="event_idea", cols = "50", rows = "5"></textarea></div>
+	<div> <%=submit_tag "Suggestion",:onclick => "return check_suggestion();"%>
+	</div>
+	<%end%>
+</div>
+<script type="text/javascript">
+ function check_suggestion()
+ {
+ 		if(document.getElementById("sugg_area").value == "")
+ 		{
+ 			alert("Suggestion can't be blank");
+ 			return false;
+ 		}
+ 	return true;
+ }
+</script>
+
+

@@ -77,6 +77,14 @@ match 'delete_album/:id' => 'albums#destroy', :as => :delete_album
      get 'reject'
      end
   end
+	
+	resources :suggestions do
+		collection do
+    	 get 'event'
+    	 get 'create_event'
+     end
+  end
+  
 
 
   root :to => 'home#home_page'
