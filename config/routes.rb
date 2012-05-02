@@ -31,6 +31,8 @@ match 'delete_album/:id' => 'albums#destroy', :as => :delete_album
 	get 'all_album_unlike'
 	get 'comment_like'
 	get 'comment_unlike'
+  get 'solution_like'
+  get 'solution_unlike'
 	end
 	end
   resources :users do

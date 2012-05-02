@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
-    <center>
-       <font color="blue"><h2><%= @photo.image_file_name %> from <%= (@photo.album).album_name%> album</h2></font>
-    </center>
+<div class="clear"></div>
+<%= render :partial =>'home/marquee',:locals=>{:message => @photo.image_file_name+" "+(@photo.album).album_name} %>
     <br>
     <div class="show_photo">
        <%= image_tag @photo.image.url(:original) %>

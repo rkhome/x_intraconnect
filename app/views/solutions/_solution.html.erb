@@ -5,11 +5,15 @@
 				<td width=15%> <%=User.find(f.user_id).first_name.titleize%></td>
 				<td><%= f.solution %></td>
 				
-				<td>
+				
 				<%if ((current_user.login_role=="employee" && f.varify!="reject") || (current_user.login_role=="admin"))%>
-					<%=link_to("Verify",verify_solution_path(f.id))%>
+					<td><%=link_to("Verify",verify_solution_path(f.id))%></td>
 				<%end%>
-				</td>
+				
+        <td>
+          <%=f.likes.count%> <%if !f.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "solution_like", :id => f.id})%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "solution_unlike", :id => f.id})%><%end%>
+        </td>
+        
 				<%if current_user.login_role == "admin" %>
 					<td><%=link_to("Reject",reject_solution_path(f.id))%></td>
 				<%end%>

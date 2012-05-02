@@ -23,6 +23,7 @@ class SolutionsController < ApplicationController
 	end
 	
 	def solutions
+   
 		session[:current_user] = User.find(params["c_u"])
 		@problem=Problem.find(params["problem_id"])
 		@solutions = @problem.solutions
