@@ -11,9 +11,11 @@ class User < ActiveRecord::Base
   has_many :photos, :through => :comments 
   has_many :likes, :as => :likedto_id , :dependent => :destroy
 	has_many :problems
-  has_many :solutions
-  has_many :suggestion  
-	has_attached_file :user_image, :styles => { :medium => "300x300>", :thumb => "100x100>", :profile => "150x150>" }
+
+
+  has_many :solutions  
+	has_attached_file :user_image, :styles => { :medium => "300x300>", :thumb => "100x100>", :profile => "150x150>", :comment_pic => "80x80>" }, :default_url => '/images/user_d.jpeg'
+
 
   
   validates :login_name, :presence => { :message => " is required" } 

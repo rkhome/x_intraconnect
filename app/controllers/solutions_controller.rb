@@ -1,5 +1,5 @@
 class SolutionsController < ApplicationController
-
+before_filter :require_user
 	def search_solutions
 		@problems = Problem.find(:all).paginate(:page=>params[:page],:per_page=>6)
 		@solution = Solution.new()
@@ -23,6 +23,7 @@ class SolutionsController < ApplicationController
 	end
 	
 	def solutions
+   
 		session[:current_user] = User.find(params["c_u"])
 		@problem=Problem.find(params["problem_id"])
 		@solutions = @problem.solutions

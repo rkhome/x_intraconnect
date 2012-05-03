@@ -20,12 +20,6 @@
 
 <script type="text/javaScript">
 
-$(document).ready(function(){	
-
-	$("hide_solution").hide();
-	
-});
-
 function show_solutions(problem_id)
 {  
 	$(document).ready(function(){		
@@ -35,7 +29,7 @@ function show_solutions(problem_id)
 	  url: "/solutions/solutions",
 	  data: { problem_id : problem_id, c_u : <%= current_user.id %>  },
 	  success: function(response){
-	  	$("div#solution_"+problem_id).append(response);
+	  	$("div#solution_"+problem_id).html(response);
 			$("div#solution_"+problem_id).show();
 			$("#show_button_"+problem_id).hide();
 			$("#hide_button_"+problem_id).show();

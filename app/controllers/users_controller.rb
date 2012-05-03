@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
       respond_to do |format|
-       @user.login_password = get_encryp_pass(@user.login_password)
+      @user.login_password = get_encryp_pass(@user.login_password)
 			@user.login_password_confirmation = get_encryp_pass(@user.login_password_confirmation)
        if @user.save
         flash[:notice]="User successfully created !" 
@@ -81,6 +81,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     respond_to do |format|
+      params[:user][:login_password] = get_encryp_pass(params[:user][:login_password])
+			params[:user][:login_password_confirmation] = get_encryp_pass(params[:user][:login_password_confirmation])
       if @user.update_attributes(params[:user])
         flash[:notice]='User detail successfully updated.'
         format.html { redirect_to @user}
