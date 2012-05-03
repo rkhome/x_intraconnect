@@ -537,7 +537,7 @@ div.slide-text {
 }
 #content {
 	float: left;
-  width: 938px;
+  /*width: 938px; */
 }
 
 .box { 
@@ -802,5 +802,40 @@ BORDER-BOTTOM: 1px solid #000000;
     margin-bottom: 10px;
     padding-left: 3px;
     width: 197px;
-
+}
+.show_photo{
+}
+.comment_user_image {
+    display: inline;
+    float: left;
+    position: relative;
+    width: 35%;
+}
+.comment_contener {
+    float: left;
+    margin-top: -64px;
+    padding-left: 90px;
+    position: relative;
+    width: 65%;
+}
+.comment {
+    margin-bottom: 4px;
+}
+.comment_like{
+}
+#show {
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.image_commet {
+    width: 100%;
+}
+.cmt_user_name{color: blue;
+}
+#comment_photo{
+}
+#home_container{
+}
+#home_login{
 }

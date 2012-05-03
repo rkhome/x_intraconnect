@@ -16,7 +16,7 @@
     <td><%= comment.user_id %></td>
     <td><%= link_to 'Show' , album_photo_comment_path(comment.photo.album,comment.photo,comment)%></td>
     <td><%= link_to 'Edit' , edit_album_photo_comment_path(comment.photo.album,comment.photo,comment)%></td>
-    <td><%= link_to 'Delete' , album_photo_comment_path(comment.photo.album,comment.photo,comment) , confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Delete' , album_photo_comment_path(comment.photo.album, comment.photo, comment) , :confirm=> 'Are you sure?', :method=> :delete %></td>
       </tr>
 <% end %>
 </table>

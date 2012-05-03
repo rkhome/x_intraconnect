@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+before_filter :require_user
   def album_like
     Like.create(:user_id=>current_user.id,:likedto_id => params[:id],:likedto_type => 'Album')
     @album=Album.find(params[:id])

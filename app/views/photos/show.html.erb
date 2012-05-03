@@ -1,23 +1,49 @@
-<div class="clear"></div>
 <%= render :partial =>'home/marquee',:locals=>{:message => @photo.image_file_name+" "+(@photo.album).album_name} %>
-    <br>
-    <div class="show_photo">
-       <%= image_tag @photo.image.url(:original) %>
-    </div>
-    <div id="all_comment_content" class="all_comments">
-<table border=1>
-     
-   <% @comments.each do |comment| %>
-<tr>
-<td width=20%><h5><font color="blue"><%= comment.user.name %></font> :</td><td> <%= comment.comment_name %></h5></td>
-</tr>
-<tr><td><%if !comment.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "comment_like", :id => comment.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "comment_unlike", :id => comment.id}, :remote=>true)%><%end%></td><td><%=comment.likes_count.to_s+" people liked" unless comment.likes.blank?%> </td></tr>
-      <% end %>
-</table>  
+
+
+  <div class="show_photo">
+     <%= image_tag @photo.image.url(:medium) %>
   </div>
-    <div class="comment" id="show">
+
+<hr/>
+  <div>
+    <% @comments.each do |comment| %>
+      <div class="image_commet">
+        <div class="comment_user_image"><%= image_tag comment.user.user_image.url(:comment_pic) %></div>
+        <div class="comment_contener">
+          <div class="comment"><span class="cmt_user_name"><%=comment.user.name.titleize%></span> <%= comment.comment_name %></div>
+          <div class=comment_like"><%=comment.created_at.to_s[0,19]%>&nbsp;&nbsp;&nbsp;&nbsp;<%if !comment.likes.map(&:user_id).include?(current_user.id) %><%= link_to("Like", {:controller => "likes", :action => "comment_like", :id => comment.id}, :remote=>true)%><%else%><%= link_to("Unlike", {:controller => "likes", :action => "comment_unlike", :id => comment.id}, :remote=>true)%><%end%></td><td>&nbsp;&nbsp;&nbsp;<span class="cmt_user_name"><%=comment.likes_count.to_s+" people liked" unless comment.likes.blank?%></span> 
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    <%end%>
+  </div>
+<div class="clear"></div>
+    <div id="show">
        <TEXTAREA id="photo_comment_text" name="comment_name" rows="2" cols="50"></TEXTAREA>
-       <input type="button" name="comment" value="comment" onclick="post_comment('<%= album_photo_comments_path(@photo.album,@photo) %>','show')">
-     </div>
-<br><br><br>
-<a href="#" onclick="show_comment('show');">New comment</a>  | <%= link_to 'Back', album_photos_path %>
+       <input type="button" name="comment" value="comment" id="comment_photo">
+    </div>
+<%= link_to 'Back', album_photos_path %>
+
+<script type="text/javascript">
+
+$('#comment_photo').click(function(){
+var comment_message = $('#photo_comment_text').val();
+  if(comment_message!=""){ 
+    $.ajax({
+      method: 'post',
+      data: {comment_name : comment_message},
+      url: '/albums/<%=@photo.album.id%>/photos/<%=@photo.id%>/comments',
+      success: function(data) {
+        window.location.reload();
+        $('#photo_comment_text').val("");
+      }
+    });
+  }else{
+    alert("Please give comment message !")
+  }
+});
+
+</script>
