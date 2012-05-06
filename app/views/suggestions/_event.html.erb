@@ -4,7 +4,7 @@
 	<div id ="all_thought" style="font-size:15px;padding-top:34px">
 	<%@suggestion.each do |f|%>
 
-<div class="image_commet">
+			<div class="image_commet">
         <div class="comment_user_image"><%= image_tag User.find(f.user_id).user_image.url(:comment_pic) %></div>
         <div class="comment_contener">
           <div class="comment"><span class="cmt_user_name"><%=user_name(f.user_id).titleize%></span> <%= f.suggestion %></div>
@@ -24,7 +24,7 @@
 
 
 	<%= will_paginate @suggestion %>
-	</div>
+
 	<%= form_tag({:controller => "suggestions", :action => "create_event"}, :method => "get") do |f|%>
 	<div id ="idea" style="padding-top:15px"> <%= label_tag "Date of Event" %><%= date_select("date_of_event", :order => [:day, :month, :year]) %><br />
 	</div>
