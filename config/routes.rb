@@ -2,7 +2,7 @@ EdAlbum::Application.routes.draw do
 match 'exit' => 'home#logout', :as => :logout
 match 'delete_album/:id' => 'albums#destroy', :as => :delete_album
 match '/albums/:album_id/photos/:photo_id/comments' => 'comments#create', :as => :new_comment
-#match '/users/:id' => 'users#destroy', :as=> :delete_user
+match '/delete_users/:id' => 'users#destroy', :as=> :delete_user
   resources :albums do
     resources :photos do
       resources :comments
