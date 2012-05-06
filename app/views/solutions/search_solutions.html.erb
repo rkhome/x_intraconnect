@@ -3,7 +3,19 @@
 	  <center>
     <table>
     <tr>
+		<td>
+		<% form_tag({:controller => "solutions", :action => "search"}, :method => "get") do |f| %>
+			<table style="width:5%;" align="right">
+				<tr>
+					<td ><%= text_field_tag(:txt_search, params["txt_search"].blank? ? "" : params["txt_search"])%> </td>
+					<td ><%= image_submit_tag("/images/search-icon.png",:id=>'sub_img', :onclick=>"return check_search()") %></td>
+				</tr>
+			</table>
 
+				
+				<div class="clear"></div>
+			
+		<%end%>
     <% @problems.each do|problem|%>
 	    <%=render :partial=>'problem',:locals=>{:problem =>problem}%>	    
 		<% end %>    
@@ -19,7 +31,14 @@
 <br><br><br>
 
 <script type="text/javaScript">
-
+function check_search()
+{
+	if($("#txt_search").val()==='')
+	{
+		return false;
+	}
+	return true;
+}
 function show_solutions(problem_id)
 {  
 	$(document).ready(function(){		

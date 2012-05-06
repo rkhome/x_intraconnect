@@ -1,34 +1,71 @@
 <div id="home_container">
 <div class="marquee" style="float:left;"><h2 >Introduction</h2></div>
 <div class="clear"></div>
-<table >
+<table>
   <tr>  
-      <td style="width:80%">
+      <td>
 
           <div id="content">
-                    <div class="box">                
-                        <p>Welcome to paradigm, a free premium valid CSS &amp; XHTML strict web template from <a href="http://www.spyka.net" title="spyka webmaster">spyka Webmaster</a>. This template is completely <strong>free</strong> to use permitting a link remains back to  <a href="http://www.spyka.net" title="spyka webmaster">http://www.spyka.net</a>. Should you wish to use this template unbranded you can buy a template license from our website for 8.00 GBP, this will allow you remove all branding related to our site, for more information about this see below.</p>	
-                        
-                        <p>This template has been tested in:</p>
+            <div class="box">                
+              <p><h3>Intra-Connect helps you connect and share with the colleagues in your organizations.</h3></p>
+
+           <h3>Features</h3>
+           <p>
+							<ul>
+								<li> Employee Information </li>
+								<li> Search feature for finding solution for any problem.</li>
+								<li> Share problem with other employees by creating New Post.</li>
+								<li> User can give suggestions for any event that organization is planning. </li>
+								<li> User can go through the suggestions provided by other users for an event in an organization.</li>
+								<li>Create new Album, and can add photos in that.</li>
+								<li> Show all Albums of employees.</li>
+								<li> Comments over photos.</li>
+								<li> Like to Album, Comment and Picture.</li>
+								<li> Can see how many people liked to a particular Album, Picture or Comment.</li>
+								<li> Permission: Employee can edit and delete self created album, picture, etc. And Admin has full permission.</li>
+								<li> User can send email by selecting individual or all recipients.</li></p>
+							</ul>   
             
-                        <ul class="styledlist">
-                            <li>Firefox 3.5</li>
-                            <li>Opera 10.00</li>
-                            <li>IE 6, 7 and 8</li>
-                            <li>Chrome</li>
-                        </ul>
-                        <h3>More free web templates</h3>
-                        <p>Looking for more free web templates for other projects? Check out our <a href="http://justfreetemplates.com/portfolio?user=spyka">free web template portfolio</a>. We also offer <a href="http://www.spyka.net/wordpress-themes">WordPress themes</a> and <a href="http://www.awesomestyles.com">phpBB3 styles</a>, all of which are released under Open Source or Creative Commons licenses!</p>
-            
-            
-                        <h3>Webmaster forums</h3>	
-                        <p>You can get help with editing and using this template, as well as design tips, tricks and advice in our <a href="http://www.spyka.net/forums" title="webmaster forums">webmaster forums</a></p>
+                        <p>You can contact at  <a href="http://www.systematixtechnocrates.com/Contact-Us.aspx" target="_blank" title="Systango intraconnect team">Intra-Connect team</a></p>
                     </div>
           </div>
 
       </td>
-      <td >
-           <%= render :partial =>'login'%>
+      <td width="40%" style="vertical-align:top;" >
+           <div id="login_content">            
+            <form method="post" action="/home/check_login" name="login_form" onsubmit="return validateForm()">
+              <table style="margin-top:50px;">
+                <tr>
+                  
+                  
+                  <td>
+                      <table style="width:380px;">
+                        <tr>
+                          <td align="right" >LOGIN NAME :</td>
+                          <td><input id="login" type="text" name="login" size="30" /></td>
+                        </tr>
+                        <tr>
+                          <td align="right"> PASSWORD :</td>
+                          <td><input id="password" type="password" name="password" size="30" /> </td>
+                        </tr>
+                        <tr>
+                          <td></td>  
+                          <td align="left"><input type="checkbox" value="true"/> &nbsp;&nbsp;REMEMBER ME</td>    
+           
+                        </tr>  
+                        <tr>
+                          <td></td>  
+                          <td align="left"><input type="submit" value="Login" style="width:100px;"/> </td>    
+                        </tr>
+                      </table>                             
+                  </td>
+                </tr>
+              </table>
+            </form>
+            <div>
+      	       <div class="clear"></div>
+            </div>
+          </div>
       </td>
   </tr>
 </table>

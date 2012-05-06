@@ -8,7 +8,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :login_role
       t.string :email_id
 
-      t.timestamps  end
+      t.timestamps  
+      end
   def self.down
     drop_table :users
   end  

@@ -2,6 +2,7 @@ EdAlbum::Application.routes.draw do
 match 'exit' => 'home#logout', :as => :logout
 match 'delete_album/:id' => 'albums#destroy', :as => :delete_album
 match '/albums/:album_id/photos/:photo_id/comments' => 'comments#create', :as => :new_comment
+match '/delete_users/:id' => 'users#destroy', :as=> :delete_user
   resources :albums do
     resources :photos do
       resources :comments
@@ -74,12 +75,21 @@ match '/albums/:album_id/photos/:photo_id/comments' => 'comments#create', :as =>
      	get 'search_solutions'
      	get 'create_solution'
      	post 'solutions' 
+     	get 'search'
      end
      member do
      get 'verify'
      get 'reject'
      end
   end
+	
+	resources :suggestions do
+		collection do
+    	 get 'event'
+    	 get 'create_event'
+     end
+  end
+  
 
 
   root :to => 'home#home_page'
