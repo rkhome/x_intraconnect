@@ -856,3 +856,38 @@ width: 180px;
 #sub_img {
     width: 27px;
 }
+#prblm_container {
+    float: left;
+    position: relative;
+    width: 800px;
+}
+.comment_user_image_s {
+    display: inline;
+    float: left;
+    position: relative;
+    width: 100px;
+}
+.cmt_user_name_s {
+    color: blue;
+    float: left;
+    margin-left: 12px;
+    text-align: left;
+    width: 150px;
+}
+.comment_contener_s {
+    float: left;
+    margin-top: -64px;
+    padding-left: 92px;
+    position: relative;
+    width: 720px;
+}
+#btn_s {
+    float: left;
+    padding: 18px;
+}
+#new_s {
+    float: left;
+    margin: 10px 10px 10px 20px;
+}
+.btn_hide{
+}

@@ -5,10 +5,10 @@
 	<%@suggestion.each do |f|%>
 
 			<div class="image_commet">
-        <div class="comment_user_image"><%= image_tag User.find(f.user_id).user_image.url(:comment_pic) %></div>
+        <div class="comment_user_image"><%= image_tag User.find(f.user_id).user_image.url(:comment_pic) rescue '' %></div>
         <div class="comment_contener">
-          <div class="comment"><span class="cmt_user_name"><%=user_name(f.user_id).titleize%></span> <%= f.suggestion %></div>
-          <div class=comment_like"><%=f.ed_date.to_s[0,19]%> 
+          <div class="comment"><span class="cmt_user_name"><%=user_name(f.user_id).titleize rescue ''%></span> <%= f.suggestion %></div>
+          <div class=comment_like"><%=f.ed_date.to_s[0,19] rescue ''%> 
           </div>
         </div>        
         <div class="clear"></div>

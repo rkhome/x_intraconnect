@@ -2,45 +2,45 @@
       <tr>
          <div class="field">
            <td align="right"><b><%= f.label :login_name, 'Login	ID' %></b></td><td><%= f.text_field :login_name, :placeholder => 'Enter Login ID...' %></td>
-          <%unless @user.errors[:login_name].blank?%> <td class="validation_error">Login Id <%=@user.errors[:login_name]%></td>  <%end%>
+          <%unless @user.errors[:login_name].blank?%> <td class="validation_error">Login Id <%=@user.errors[:login_name].first%></td>  <%end%>
         </div>
       </tr>
 		<% unless show_image==true %>      
 			<tr>
          <div class="field">
            <td align="right"><b><%= f.label :password %></b></td><td><%= f.password_field :login_password %></td>
-           <%unless @user.errors[:login_password].blank?%> <td class="validation_error">Login Password <%=@user.errors[:login_password]%></td>  <%end%>
+           <%unless @user.errors[:login_password].blank?%> <td class="validation_error">Login Password <%=@user.errors[:login_password].first%></td>  <%end%>
          </div>
       </tr>
       <tr>
          <div class="field">
            <td align="right"><b><%= f.label :password_confirmation %></td><td><%= f.password_field :login_password_confirmation %></td>
-           <%unless @user.errors[:login_password_confirmation].blank?%> <td class="validation_error">Confirm Password <%=@user.errors[:login_password_confirmation].blank?%></td>  <%end%>
+           <%unless @user.errors[:login_password_confirmation].blank?%> <td class="validation_error">Confirm Password <%=@user.errors[:login_password_confirmation].first?%></td>  <%end%>
          </div>
       </tr>
 			<% end %>
       <tr>
          <div class="field">
            <td align="right"><b><%= f.label :first_name, 'First Name' %></b></td></td><td><%= f.text_field :first_name, :placeholder => 'Enter First Name...' %></td>
-           <%unless @user.errors[:first_name].blank?%> <td class="validation_error">First Name<%=@user.errors[:first_name]%></td>  <%end%>
+           <%unless @user.errors[:first_name].blank?%> <td class="validation_error">First Name<%=@user.errors[:first_name].first%></td>  <%end%>
          </div>
       </tr>
       <tr>
         <div class="field">
            <td align="right"><b><%= f.label :last_name %></b></td><td><%= f.text_field :last_name, :placeholder => 'Enter Last Name...' %></td>
-           <%unless @user.errors[:last_name].blank?%> <td class="validation_error">Last Name<%=@user.errors[:last_name]%></td>  <%end%>
+           <%unless @user.errors[:last_name].blank?%> <td class="validation_error">Last Name<%=@user.errors[:last_name].first%></td>  <%end%>
         </div>
       </tr>
       <tr>
         <div class="field">
            <td align="right"><b><%= f.label :login_role %></b></td><td><%= f.select :login_role, [['Admin','Admin'],  ['Employee','Employee']] %>
-           <%unless @user.errors[:login_role].blank?%> <td class="validation_error">Login Role<%=@user.errors[:login_role]%></td>  <%end%>
+           <%unless @user.errors[:login_role].blank?%> <td class="validation_error">Login Role<%=@user.errors[:login_role].first%></td>  <%end%>
         </div>
         </tr>
       <tr>
         <div class="field">
-           <td align="right"><b><%= f.label :email_id %></b></td><td><%= f.text_field :email_id, :id =>'mail', :placeholder => 'Enter Email-ID...' %></td>
-           <%unless @user.errors[:email_id].blank?%> <td class="validation_error">Email-ID<%=@user.errors[:email_id]%></td>  <%end%>
+           <td align="right"><b><%= f.label :email_id %></b></td><td><%= f.text_field :email_id, :id =>'mail', :placeholder => 'Enter Email-ID...' %></td> 
+           <%unless @user.errors[:email_id].blank?%> <td class="validation_error">Email-ID<%=@user.errors[:email_id].first%></td>  <%end%>
         </div>
       </tr>
 <% unless show_image==true %>
@@ -54,33 +54,33 @@
       <tr>
         <div class="field">
            <td align="right"><b><%= f.label :mobile_no %></b></td><td><%= f.text_field :mobile_no, :placeholder => 'Enter Mobile No...' %></td>
-           <%unless @user.errors[:mobile_no].blank?%> <td class="validation_error">Mobile No.<%=@user.errors[:mobile_no]%></td>  <%end%>
+           <%unless @user.errors[:mobile_no].blank?%> <td class="validation_error">Mobile No.<%=@user.errors[:mobile_no].first%></td>  <%end%>
         </div>
       </tr>
 
       <tr>
         <div class="field">
            <td align="right"><b><%= f.label :phone_no %></b></td><td><%= f.text_field :phone_no, :placeholder => 'Enter Phone No...' %></td>
-           <%unless @user.errors[:phone_no].blank?%> <td class="validation_error">Phone No.<%=@user.errors[:phone_no]%></td>  <%end%>
+           <%unless @user.errors[:phone_no].blank?%> <td class="validation_error">Phone No.<%=@user.errors[:phone_no].first%></td>  <%end%>
         </div>
       </tr>
       <tr>
         <div class="field">
            <td align="right"><b><%= f.label :local_address %></b></td><td><%= f.text_field :local_address, :placeholder => 'Enter Local Address...' %></td>
-           <%unless @user.errors[:local_address].blank?%> <td class="validation_error">Local Address.<%=@user.errors[:local_address]%></td>  <%end%>
+           <%unless @user.errors[:local_address].blank?%> <td class="validation_error">Local Address.<%=@user.errors[:local_address].first%></td>  <%end%>
         </div>
       </tr>
       <tr>
         <div class="field">
            <td align="right"><b><%= f.label :permanent_address %></b></td><td><%= f.text_field :permanent_address, :placeholder => 'Enter Permanent Address...' %></td>
-           <%unless @user.errors[:permanent_address].blank?%> <td class="validation_error">Permanent Address.<%=@user.errors[:permanent_address]%></td>  <%end%>
+           <%unless @user.errors[:permanent_address].blank?%> <td class="validation_error">Permanent Address.<%=@user.errors[:permanent_address].first%></td>  <%end%>
         </div>
       </tr>
 
       <tr>
         <div class="field">
            <td align="right"><b><%= f.label :date_of_birth %></b></td><td><%= f.date_select("date_of_birth", :order => [:day, :month, :year], :start_year => 1920) %></td>
-           <%unless @user.errors[:date_of_birth].blank?%> <td class="validation_error">Date of Birth.<%=@user.errors[:date_of_birth]%></td>  <%end%><%unless @user.errors[:date_of_birth].blank?%> <td class="validation_error">Login Role<%=@user.errors[:date_of_birth]%></td>  <%end%>
+           <%unless @user.errors[:date_of_birth].blank?%> <td class="validation_error">Date of Birth.<%=@user.errors[:date_of_birth]%></td>  <%end%><%unless @user.errors[:date_of_birth].blank?%> <td class="validation_error">Login Role<%=@user.errors[:date_of_birth].first%></td>  <%end%>
         </div>
       </tr>
 

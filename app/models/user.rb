@@ -1,34 +1,36 @@
 
 class User < ActiveRecord::Base
-
   cattr_reader :page
   @@page = 5
-
-
 
   has_many :albums, :dependent => :destroy
   has_many :comments, :dependent => :destroy 
   has_many :photos, :through => :comments 
   has_many :likes, :as => :likedto , :dependent => :destroy
-	has_many :problems
+	has_many :problems, :dependent => :destroy
 
-
-  has_many :solutions  
+  has_many :solutions, :dependent => :destroy  
 	has_attached_file :user_image, :styles => { :medium => "300x300>", :thumb => "100x100>", :profile => "150x150>", :comment_pic => "80x80>" }, :default_url => '/images/user_d.jpeg'
-
-
   
-  validates :login_name, :presence => { :message => " is required" },:length => { :in => 3..30 } 
-  
+  validates :login_name, :presence => { :message => " is required" }
+
+  validates :login_name, :length => {
+    :minimum   => 5,
+    :maximum   => 30,
+    :too_short => "must have at least %{count} char",
+    :too_long  => "must have at most %{count} char"
+  }
+  validates :login_password, :presence => { :message => " is required" }
+
 	validates :login_password, :confirmation => true
   validates :login_password_confirmation, :presence => true 
-  validates :first_name, :presence => { :message => " is required" },:length => { :in => 3..50 } 
-  validates :last_name, :presence => { :message => " is required" },:length => { :in => 3..50 } 
- # validates_presence_of :date_of_birth, :unless => Proc.new { |user| user.date_of_birth <= Time.now}, :messgae=>" is reqired"
+  validates :first_name, :presence => { :message => " is required" }
+  validates :last_name, :presence => { :message => " is required" }  
+  validates_presence_of :date_of_birth, :unless => Proc.new { |user| user.date_of_birth <= Time.now}, :messgae=>" is reqired"
 
   validates :login_role, :presence => { :message => " is required" }
   validates :email_id, :presence => { :message => " is required" }
-validates :email_id,:format => { :with => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/,:message => " Invalid email address" }
+validates :email_id,:format => { :with => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/,:message => " is invalid " }
 
 
   validates :login_name, :uniqueness => { :message => " is already register" }

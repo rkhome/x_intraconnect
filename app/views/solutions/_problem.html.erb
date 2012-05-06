@@ -1,45 +1,42 @@
-<tr>
-	<td><hr>
-	
-<%=image_tag((User.find(problem.user_id)).user_image.url(:comment_pic))%>	<%=get_user(problem.user_id).titleize%></td>
-</tr>
+<div id="prblm_container">
+  
+      <div class="image_commet">
+        <div class="comment_user_image_s"><%= image_tag((User.find(problem.user_id)).user_image.url(:comment_pic)) rescue '' %></div>
+        <div class="comment_contener_s">
+          <div class="comment"><div class="cmt_user_name_s"><%=get_user(problem.user_id).titleize rescue ''%></div>
+          <div style="float:left;text-align: left;width: 550px;"> <%= problem.title.titleize rescue '' %></div></div>          
+        </div>
+        <div style="display:inline;float:left;margin-left:95px;margin-top:-30px;" class=comment_like"><%=problem.created_at.to_s[0,19] rescue ''%></div>        
+      </div>
+      <div class="clear"></div>
 
-<tr>
-	<td><%=problem.created_at.to_s[0,19]%></td>
-</tr>
 
-<tr>
-	<td>
-		Title; <%=problem.title.titleize%>
-	</td>	
-<tr>
-	<td>
-		<textarea style="width:900px;height:auto;color:black" id="textarea" name="content", cols = "50", rows = "7", disabled="disabled"><%=problem.description%></textarea>
-	</td>
-</tr>
 
-	<td><input type="button" id="show_button_<%=problem.id%>" value="Show Solutions" onClick="show_solutions(<%=problem.id%>);"/>
-	<input type="button" name="hide_solution" id="hide_button_<%=problem.id%>" value="Hide Solutions" onClick="hide_solutions(<%=problem.id%>);"/>
-	</td>
-</tr>
-<tr>
-	<td>
-		<div id="solution_<%=problem.id %>" ></div>
-	</td>
-</tr>
+</div>
+      
+		      <textarea style="width:900px;height:auto;color:black" id="textarea" name="content", cols = "50", rows = "7", disabled="disabled"><%=problem.description%></textarea>
+	    <div id="btn_s">
+          <input type="button" id="show_button_<%=problem.id%>" value="Show Solutions" onClick="show_solutions(<%=problem.id%>);"/>
+  	      <input class="btn_hide" type="button" name="hide_solution" id="hide_button_<%=problem.id%>" value="Hide Solutions" onClick="hide_solutions(<%=problem.id%>);"/>
+      </div>
+<div class="clear"></div>
 
-<tr>
- <% form_tag({:controller => "solutions", :action => "create_solution"}, :method => "get") do |f| %>
-    
-	<td>Post Solution</td>
-</tr><tr>
-<tr><td> <textarea id="solution_of_<%=problem.id%>" name="solution", cols = "50", rows = "5"></textarea></td>
-<%= hidden_field_tag(:hidden_problem_id, problem.id) %>
-</tr>
-</tr>
+		      <div id="solution_<%=problem.id %>" ></div>
 
-<tr>
-	<td><input type="submit" id="solution_button_<%=problem.id%>" value="Post Solutions"/></td>
-</tr>
-</tr>
-<% end %>
+<div class="clear"></div>
+    <div id="new_s">
+       <% form_tag({:controller => "solutions", :action => "create_solution"}, :method => "get") do |f| %>
+          
+         <h3 style="text-align:left;">Post Solution</h3>
+
+         <textarea id="solution_of_<%=problem.id%>" name="solution", cols = "50", rows = "5"></textarea>
+         <%= hidden_field_tag(:hidden_problem_id, problem.id) %>     
+    	   <br/><input style="float:left; margin-top:10px;" type="submit" id="solution_button_<%=problem.id%>" value="Post Solutions"/>
+     
+       <% end %>
+    </div>
+<script>
+  $(document).ready(function() {
+    $('div#btn_hide').hide();  
+  });
+</script>

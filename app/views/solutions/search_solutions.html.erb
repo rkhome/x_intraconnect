@@ -16,9 +16,19 @@
 				<div class="clear"></div>
 			
 		<%end%>
+    
+   </td></tr> </table>
+<div>
+
     <% @problems.each do|problem|%>
 	    <%=render :partial=>'problem',:locals=>{:problem =>problem}%>	    
 		<% end %>    
+
+</div>
+    <table>
+    <tr>
+		<td>
+
     <tr>
       
          <td></td><td></td>
