@@ -18,15 +18,18 @@ class User < ActiveRecord::Base
 
 
   
-  validates :login_name, :presence => { :message => " is required" } 
+  validates :login_name, :presence => { :message => " is required" },:length => { :in => 3..30 } 
+  
 	validates :login_password, :confirmation => true
   validates :login_password_confirmation, :presence => true 
-  validates :first_name, :presence => { :message => " is required" }
-  validates :last_name, :presence => { :message => " is required" }
+  validates :first_name, :presence => { :message => " is required" },:length => { :in => 3..50 } 
+  validates :last_name, :presence => { :message => " is required" },:length => { :in => 3..50 } 
  # validates_presence_of :date_of_birth, :unless => Proc.new { |user| user.date_of_birth <= Time.now}, :messgae=>" is reqired"
 
   validates :login_role, :presence => { :message => " is required" }
   validates :email_id, :presence => { :message => " is required" }
+validates :email_id,:format => { :with => /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]+$/,:message => " Invalid email address" }
+
 
   validates :login_name, :uniqueness => { :message => " is already register" }
   validates :email_id, :uniqueness => { :message => " is already register" }

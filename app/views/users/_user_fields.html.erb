@@ -2,7 +2,7 @@
       <tr>
          <div class="field">
            <td align="right"><b><%= f.label :login_name, 'Login	ID' %></b></td><td><%= f.text_field :login_name, :placeholder => 'Enter Login ID...' %></td>
-          <%unless @user.errors[:login_name].blank?%> <td class="validation_error">Login Id<%=@user.errors[:login_name]%></td>  <%end%>
+          <%unless @user.errors[:login_name].blank?%> <td class="validation_error">Login Id <%=@user.errors[:login_name]%></td>  <%end%>
         </div>
       </tr>
 		<% unless show_image==true %>      
