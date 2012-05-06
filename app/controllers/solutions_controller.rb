@@ -1,7 +1,7 @@
 class SolutionsController < ApplicationController
-before_filter :require_user
+#before_filter :require_user
 	def search_solutions
-		@problems = Problem.find(:all).paginate(:page=>params[:page],:per_page=>6)
+		@problems = Problem.find(:all).paginate(:page=>params[:page],:per_page=>3)
 		@solution = Solution.new()
 	end
 	
@@ -22,28 +22,35 @@ before_filter :require_user
 		end
 	end
 	
-	def solutions
-   
+	def solutions   
 		session[:current_user] = User.find(params["c_u"])
 		@problem=Problem.find(params["problem_id"])
 		@solutions = @problem.solutions
 		render :partial=>'solution', :layout=>false
 	end
 	
-	def verify
-	
+	def verify	
 		sol = Solution.find_by_id(params[:id])
 		sol.update_attribute(:varify,"verify")
 		redirect_to search_solutions_solutions_path
 		flash[:notice]="Verified Solution"
 	end
 	
-	def reject
-	
+	def reject	
 		sol = Solution.find_by_id(params[:id])
 		sol.update_attribute(:varify,"reject")
 		redirect_to search_solutions_solutions_path
 		flash[:notice]="Rejected Solution"
+	end
+	
+	def search
+		search_value = "%#{params[:txt_search]}%"
+		search_result = Problem.where("title like ? or description like ?", search_value, search_value) rescue []
+		@problems = search_result.paginate(:page=>params[:page],:per_page=>3)
+		@solution = Solution.new()
+		flash[:notice]="Yehh! you have found matching results..."
+		flash[:notice]="Sorry! No result is found." if @problems.blank?
+		render 'search_solutions'
 	end
 
 end

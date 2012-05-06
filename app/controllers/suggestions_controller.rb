@@ -13,12 +13,12 @@ class SuggestionsController < ApplicationController
 		sugg.user_id = current_user.id
 		if sugg.save
 			flash[:notice] ="Event is created"
-			redirect_to admin_users_path if current_user.login_role == "admin"
-			redirect_to employee_users_path if current_user.login_role == "employee"
+			redirect_to admin_users_path if current_user.login_role == "Admin"
+			redirect_to employee_users_path if current_user.login_role == "Employee"
 		else
 			flash[:error] = "Fail to create suggestion"
-			redirect_to admin_users_path if current_user.login_role == "admin"
-			redirect_to employee_users_path if current_user.login_role == "employee"
+			redirect_to admin_users_path if current_user.login_role == "Admin"
+			redirect_to employee_users_path if current_user.login_role == "Employee"
 		end
 	end
 

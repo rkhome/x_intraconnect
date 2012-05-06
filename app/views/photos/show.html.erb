@@ -2,7 +2,7 @@
 
 
   <div class="show_photo">
-     <%= image_tag @photo.image.url(:medium) %>
+     <a href='<%=@photo.image.url(:original)%>'> <%=image_tag @photo.image.url(:medium) %></a>
   </div>
 
 <hr/>

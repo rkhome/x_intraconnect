@@ -1,13 +1,28 @@
 <%= javascript_include_tag "jquery_calender.js"%>
 <%= javascript_include_tag "jquery_ui_calender.js"%>
 <div>
-	<div id ="all_thought" style="font-size:15px;padding-top:34px"><%@suggestion.each do |f|%>
-	<div id="user_picture"></div>
-	<div id = "user"><div><%=user_name(f.user_id)%>:  <%=f.suggestion%></div>
-	<div><%=f.ed_date%></div>	
-	
-	</div>
+	<div id ="all_thought" style="font-size:15px;padding-top:34px">
+	<%@suggestion.each do |f|%>
+
+<div class="image_commet">
+        <div class="comment_user_image"><%= image_tag User.find(f.user_id).user_image.url(:comment_pic) %></div>
+        <div class="comment_contener">
+          <div class="comment"><span class="cmt_user_name"><%=user_name(f.user_id).titleize%></span> <%= f.suggestion %></div>
+          <div class=comment_like"><%=f.ed_date.to_s[0,19]%> 
+          </div>
+        </div>        
+        <div class="clear"></div>
+        
+      </div>
+      <div class="clear"></div>
+
+
 	<%end%>
+		
+	</div>
+
+
+
 	<%= will_paginate @suggestion %>
 	</div>
 	<%= form_tag({:controller => "suggestions", :action => "create_event"}, :method => "get") do |f|%>

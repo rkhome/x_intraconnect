@@ -309,7 +309,7 @@ ul.styledlist li {
 	font-size: 40px;
 	font-family: "Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
 	font-weight: normal;
-	text-transform: uppercase;
+	text-transform: inherit;
 	text-decoration: none;
 	letter-spacing: -3px;
 	float: left;
@@ -838,4 +838,21 @@ BORDER-BOTTOM: 1px solid #000000;
 #home_container{
 }
 #home_login{
+}
+
+.textInput
+{
+border: 1px solid #ff0000;
+background: white;
+color: black;
+font-size: 1.1em;
+}
+#search_solution{
+	width: 250px;
+}
+#txt_search{
+width: 180px;
+}
+#sub_img {
+    width: 27px;
 }

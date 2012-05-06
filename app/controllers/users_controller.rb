@@ -7,12 +7,12 @@ class UsersController < ApplicationController
   # GET /users.json
 #   layout 'admin_layout' , :except => [:employee , :change_password]
   def admin
-    @suggestion = Suggestion.where('ed_date >= ?',Time.now.strftime("%Y-%m-%d")).paginate(:page => params[:page], :per_page => 10)
+    @suggestion = Suggestion.where('ed_date >= ?',Time.now.strftime("%Y-%m-%d")).paginate(:page => params[:page], :per_page => 5)
        
   end
 
   def employee
-    @suggestion = Suggestion.where('ed_date >= ?',Time.now.strftime("%Y-%m-%d")).paginate(:page => params[:page], :per_page => 10)
+    @suggestion = Suggestion.where('ed_date >= ?',Time.now.strftime("%Y-%m-%d")).paginate(:page => params[:page], :per_page => 5)
   end
 
   def change_password

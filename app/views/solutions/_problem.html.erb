@@ -1,10 +1,11 @@
 <tr>
 	<td><hr>
-	<%=get_user(problem.user_id).titleize%></td>
+	
+<%=image_tag((User.find(problem.user_id)).user_image.url(:comment_pic))%>	<%=get_user(problem.user_id).titleize%></td>
 </tr>
 
 <tr>
-	<td><%=problem.created_at%></td>
+	<td><%=problem.created_at.to_s[0,19]%></td>
 </tr>
 
 <tr>
@@ -13,7 +14,7 @@
 	</td>	
 <tr>
 	<td>
-		<textarea id="textarea" name="content", cols = "50", rows = "5" disabled="disabled"><%=problem.description%></textarea>
+		<textarea style="width:900px;height:auto;color:black" id="textarea" name="content", cols = "50", rows = "7", disabled="disabled"><%=problem.description%></textarea>
 	</td>
 </tr>
 
