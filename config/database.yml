@@ -10,6 +10,13 @@ development:
   username: root
   password: root
 
+production:
+  adapter: mysql
+  database: ed_album
+  pool: 5
+  username: root
+  password: root
+
 test:
   adapter: mysql
   database: ed_album_test
