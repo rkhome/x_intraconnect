@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421222354) do
+ActiveRecord::Schema.define(:version => 20120609174747) do
 
   create_table "albums", :force => true do |t|
     t.string   "album_name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20120421222354) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cover_photo_id"
-    t.integer  "likes_count"
+    t.integer  "likes_count",       :default => 0
   end
 
   add_index "albums", ["user_id"], :name => "index_albums_on_user_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20120421222354) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "likes_count"
+    t.integer  "likes_count",  :default => 0
   end
 
   add_index "comments", ["photo_id"], :name => "index_comments_on_photo_id"
@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(:version => 20120421222354) do
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "likedto_id"
     t.string   "likedto_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "likedto_id"
   end
 
   create_table "photos", :force => true do |t|
@@ -58,10 +58,18 @@ ActiveRecord::Schema.define(:version => 20120421222354) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "likes_count"
+    t.integer  "likes_count",        :default => 0
   end
 
   add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
+
+  create_table "problems", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
@@ -73,6 +81,24 @@ ActiveRecord::Schema.define(:version => 20120421222354) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "solutions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "problem_id"
+    t.text     "solution"
+    t.string   "varify"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "likes_count", :default => 0
+  end
+
+  create_table "suggestions", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "suggestion"
+    t.date     "ed_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login_name"
     t.string   "login_password"
@@ -82,6 +108,13 @@ ActiveRecord::Schema.define(:version => 20120421222354) do
     t.string   "email_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mobile_no"
+    t.string   "phone_no"
+    t.string   "permanent_address"
+    t.string   "local_address"
+    t.string   "city"
+    t.time     "date_of_birth"
+    t.string   "user_image_file_name"
   end
 
 end

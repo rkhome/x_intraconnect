@@ -1,10 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.7'
-gem 'hirb'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-gem 'rake' , "0.8.7"
+gem 'rake' , "0.9.1"
 gem 'mysql'
 gem 'ezcrypto'
 gem 'sass'
@@ -16,12 +15,10 @@ gem 'will_paginate', '~>2.3.15'
 gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer'
-
-
+gem 'ar-octopus', :require => "octopus", :git => 'https://github.com/tchandy/octopus.git'
 # Use unicorn as the web server
 # gem 'unicorn'
 gem "clearance", '0.11.1'
-
 group :test, :development do
   # Pretty printed test output
   gem 'turn', :require => false
@@ -29,4 +26,8 @@ group :test, :development do
   gem 'capybara'
   gem 'shoulda'
   gem 'ruby-debug'
+  gem 'hirb'
+end
+group :production do
+  gem 'pg'
 end
