@@ -1,9 +1,10 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.2.6'
+
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
-gem 'rake' , "0.9.1"
+gem 'rake'
 gem 'mysql'
 gem 'ezcrypto'
 gem 'sass'
@@ -18,15 +19,15 @@ gem 'therubyracer'
 gem 'ar-octopus', :require => "octopus", :git => 'https://github.com/tchandy/octopus.git'
 # Use unicorn as the web server
 # gem 'unicorn'
-gem "clearance", '0.11.1'
+#gem "clearance", '0.11.1'
 group :test, :development do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem "rspec-rails", "~> 2.4"
-  gem 'capybara'
-  gem 'shoulda'
-  gem 'ruby-debug'
-  gem 'hirb'
+#  gem "rspec-rails", "~> 2.4"
+#  gem 'capybara'
+#  gem 'shoulda'
+  gem 'debugger'
+#  gem 'hirb'
 end
 group :production do
   gem 'pg'
